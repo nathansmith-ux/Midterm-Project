@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,8 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieParser());
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -32,12 +35,23 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 
+// New Routes Added
+const listingRoutes = require('./routes/listings');
+const messageRoutes = require('./routes/messages');
+const favouriteRoutes = require('./routes/favourites');
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+
+//New Routes Added
+app.use('/listings', listingRoutes);
+app.use('/messages', messageRoutes);
+app.use('/favourites', favouriteRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -46,6 +60,13 @@ app.use('/users', usersRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+// localhost:8080/login/1
+// localhost:8080/login/2
+app.get('/login/:id', (req, res) => {
+  res.cookie('user_id', req.params.id);
+  res.redirect('/');
 });
 
 app.listen(PORT, () => {
