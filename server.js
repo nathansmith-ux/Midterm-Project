@@ -44,6 +44,7 @@ const favouriteRoutes = require('./routes/favourites');
 
 // API Routes
 const itemApiRoutes = require('./routes/api/items-api');
+const favouritesApiRoutes = require('./routes/api/favourites-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,6 +60,7 @@ app.use('/favourites', favouriteRoutes);
 
 // API Endpoints
 app.use('/api/items', itemApiRoutes);
+app.use('/api/favourites', favouritesApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
@@ -83,17 +85,17 @@ app.get('/login/:id', (req, res) => {
   ])
     .then(([featuredItems, allItems]) => {
 
-      const templateVars = {
-        featuredItems: featuredItems,
-        allItems: allItems
-      };
-      console.log(templateVars);
-      res.render('index', templateVars);
-    })
-    .catch(err => {
-      res.status(500);
-      console.log('Server Error', err);
-    });
+    const templateVars = {
+      featuredItems: featuredItems,
+      listedItems: allItems
+    }
+    console.log(templateVars);
+    res.render('index', templateVars)
+  })
+  .catch(err => {
+    res.status(500)
+    console.log('Server Error', err)
+  })
 });
 
 app.listen(PORT, () => {
