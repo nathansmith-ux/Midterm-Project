@@ -62,11 +62,11 @@
   </div>
   <!-- featured items -->
   <div class="featured-items-container">
-    <% if (featureditems) { %>
-      <% for (let i = 0; i < featureditems.length; i++) { %>
+    <% if (featuredItems) { %>
+      <% for (let i = 0; i < featuredItems.length; i++) { %>
         <div class="col-md-3">
-          <img src="<%= featureditems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
-          <p><strong><%= featureditems[i].title %></strong> <em><% featureditems[i].description %></em></p>
+          <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
+          <p><strong><%= featuredItems[i].title %></strong> <em><% featuredItems[i].description %></em></p>
           <div class="image-actions">
             <i class="fas fa-heart"></i>
             <i class="fas fa-envelope"></i>
