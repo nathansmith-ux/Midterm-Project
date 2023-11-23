@@ -83,7 +83,7 @@ app.get('/login/:id', (req, res) => {
     featured.getFeaturedItems(),
     items.getAllItems()
   ])
-  .then(([featuredItems, allItems]) => {
+    .then(([featuredItems, allItems]) => {
 
     const templateVars = {
       featuredItems: featuredItems,

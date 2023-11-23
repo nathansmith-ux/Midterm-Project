@@ -2,23 +2,116 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Home Page</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-
+  <!-- Boot strap and font awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <h1>Home! 🥔</h1>
-</body>
+  <!-- Navigation -->
+  <!-- TODO: When we go into hamberger mode display messages as a link so it can show notifications and fix the navbar to the top as sticky in CSS-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="images/smallLogo.png" class="img-responsive" alt="Responsive image">
+      </a>
 
-</html>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Messages</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">My Listings</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">My Favourites</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Sign out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- Splash Logo -->
+  <div class="cool_logo_splash jumbotron">
+    <h1>Sellify</h1>
+  </div>
+  <!-- featured items -->
+  <div class="featured-items-container">
+    <% if (featureditems) { %>
+      <% for (let i = 0; i < featureditems.length; i++) { %>
+        <div class="col-md-3">
+          <img src="<%= featureditems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
+          <p><strong><%= featureditems[i].title %></strong> <em><% featureditems[i].description %></em></p>
+          <div class="image-actions">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-cog"></i>
+          </div>
+        </div>
+        <% } %>
+    <% } %>
+  </div>
+  <!-- Price Filter -->
+  <div class="container mt-5">
+    <h2>Filter by Price Range</h2>
+    <form>
+      <!-- Price Range Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="minPrice">Minimum Price</label>
+          <input type="number" class="form-control" id="minPrice" placeholder="Enter minimum price">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="maxPrice">Maximum Price</label>
+          <input type="number" class="form-control" id="maxPrice" placeholder="Enter maximum price">
+        </div>
+      </div>
+      <!-- listed items -->
+      <div class="listed-items-container">
+        <% if (listedItems) { %>
+          <% for (let i = 0; i < listedItems.length; i++) { %>
+            <div class="col-md-3">
+              <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
+              <p><strong><%= listedItems[i].title %></strong> <em><% listedItems[i].description %></em></p>
+              <div class="image-actions">
+                <i class="fas fa-heart"></i> <!-- Like icon -->
+                <i class="fas fa-envelope"></i> <!-- Message icon -->
+                <i class="fas fa-cog"></i> <!-- Edit icon -->
+              </div>
+            </div>
+            <% } %>
+        <% } %>
+        </div>
+
+        <footer>contact us @ all rights reserved</footer>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+      </body>
+
+      </html>
