@@ -32,7 +32,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <img src="images/smallLogo.png" class="img-responsive" alt="Responsive image">
+          <img src="https://images7.alphacoders.com/115/1153599.jpg" class="img-responsive" alt="Responsive image">
       </a>
 
       </div>
@@ -40,20 +40,16 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Messages</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">My Listings</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">My Favourites</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Sign out</a></li>
-            </ul>
-          </li>
+          <li><a href="/messages">Messages</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/listings">My Listings</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/favourites">My Favourites</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Sign out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
+
     </div><!-- /.container-fluid -->
   </nav>
   <!-- Splash Logo -->
@@ -62,11 +58,11 @@
   </div>
   <!-- featured items -->
   <div class="featured-items-container">
-    <% if (featureditems) { %>
-      <% for (let i = 0; i < featureditems.length; i++) { %>
+    <% if (featuredItems) { %>
+      <% for (let i = 0; i < featuredItems.length; i++) { %>
         <div class="col-md-3">
-          <img src="<%= featureditems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
-          <p><strong><%= featureditems[i].title %></strong> <em><% featureditems[i].description %></em></p>
+          <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
+          <p><strong><%= featuredItems[i].title %></strong> <em><% featuredItems[i].description %></em></p>
           <div class="image-actions">
             <i class="fas fa-heart"></i>
             <i class="fas fa-envelope"></i>
@@ -95,7 +91,7 @@
       <div class="listed-items-container">
         <% if (listedItems) { %>
           <% for (let i = 0; i < listedItems.length; i++) { %>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
               <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
               <p><strong><%= listedItems[i].title %></strong> <em><% listedItems[i].description %></em></p>
               <div class="image-actions">
