@@ -1,18 +1,263 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+/* Reset some basic elements */
+body, h1, nav, ul, li, a {
+  margin: 0;
+  padding: 0;
 }
+
+/* Basic styling for the body */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+
+/* Header styles */
+h1 {
+  color: #333;
+}
+
+/* Navbar styles */
+.navbar-default {
+  background-color: #e7e7e7;
+  border-color: #ddd;
+}
+
+.navbar-brand {
+  padding: 5px; /* Adjust padding as needed */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally if needed */
+}
+
+.navbar-brand img {
+  height: auto; /* Maintain the aspect ratio */
+  max-height: 50px; /* Adjust this value based on the navbar's height */
+  width: auto; /* Adjust width as needed */
+  border-radius: 10px; /* Optional: Adds rounded corners to the logo */
+}
+
+
+/* Link styles */
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #23527c;
+}
+
+/* Navigation styles */
+.navbar-nav li {
+  list-style-type: none;
+}
+
+/* Make the navbar links horizontal */
+.navbar-nav {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-nav li a {
+  padding: 10px;
+  display: block;
+}
+
+/* Styles for the dropdown menu */
+.dropdown-menu {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.dropdown-menu li a {
+  color: #333;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Styles for the main content */
+.main-content {
+  margin-top: 20px;
+}
+
+.jumbotron {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center children vertically */
+  align-items: center; /* Center children horizontally */
+  background-image: url('https://images7.alphacoders.com/115/1153599.jpg'); /* Your background image path */
+  background-size: cover; /* Cover the entire jumbotron area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.jumbotron h1 {
+  color: rgb(173, 215, 205), 0.564;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px white;
+}
+
+.jumbotron h2 {
+  margin-bottom: 20px;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Style for the images in the items row */
+.row .col-md-3 img {
+  margin-bottom: 15px; /* Add space below the images */
+}
+
+/* Style for the item descriptions */
+.row .col-md-3 p {
+  text-align: center; /* Center-align the text */
+  /* Additional styles here */
+}
+
+.image-actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.image-actions i {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+  /* Add other styles like color, size etc. */
+}
+
+.image-actions i:hover {
+  color: #337ab7; /* Change color on hover */
+}
+
+
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+// potential background animation //
+
+// .jello-horizontal{animation:jello-horizontal .9s linear both} @keyframes jello-horizontal{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,.75,1)}40%{transform:scale3d(.75,1.25,1)}50%{transform:scale3d(1.15,.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}100%{transform:scale3d(1,1,1)}}
+
+// @keyframes move {
+//   100% {
+//       transform: translate3d(0, 0, 1px) rotate(360deg);
+//   }
+// }
+
+// .background {
+//   position: fixed;
+//   width: 100vw;
+//   height: 100vh;
+//   top: 0;
+//   left: 0;
+//   background: #ffffff;
+//   overflow: hidden;
+//   z-index: -1;
+// }
+
+// .background span {
+//   width: 20vmin;
+//   height: 20vmin;
+//   border-radius: 20vmin;
+//   backface-visibility: hidden;
+//   position: absolute;
+//   animation: move;
+//   animation-duration: 45;
+//   animation-timing-function: linear;
+//   animation-iteration-count: infinite;
+// }
+
+
+// .background span:nth-child(0) {
+//   background-image: url('https://imgs.search.brave.com/Sz3XLvtncpOszGA7Bo8xiHjm6ZFpzTSi7N7jwVTlXXA/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1Lzk1LzY5LzU0/LzM2MF9GXzU5NTY5/NTQzN19yRVZlaUxq/WUg2WUhMSEYxVzB2/YlF3dDlaeWpBVGcz/RS5qcGc');
+//   color: #583C87;
+//   top: 99%;
+//   left: 34%;
+//   animation-duration: 23s;
+//   animation-delay: -33s;
+//   transform-origin: -6vw -20vh;
+//   box-shadow: 40vmin 0 5.764835802829339vmin currentColor;
+// }
+// .background span:nth-child(1) {
+//   color: #583C87;
+//   top: 74%;
+//   left: 19%;
+//   animation-duration: 41s;
+//   animation-delay: -48s;
+//   transform-origin: 10vw 17vh;
+//   box-shadow: -40vmin 0 5.380352737780584vmin currentColor;
+// }
+// .background span:nth-child(2) {
+//   color: #583C87;
+//   top: 94%;
+//   left: 64%;
+//   animation-duration: 37s;
+//   animation-delay: -50s;
+//   transform-origin: -5vw 18vh;
+//   box-shadow: -40vmin 0 5.7056545063424995vmin currentColor;
+// }
+// .background span:nth-child(3) {
+//   color: #583C87;
+//   top: 28%;
+//   left: 15%;
+//   animation-duration: 39s;
+//   animation-delay: -42s;
+//   transform-origin: 21vw 15vh;
+//   box-shadow: 40vmin 0 5.602660263604136vmin currentColor;
+// }
+// .background span:nth-child(4) {
+//   color: #583C87;
+//   top: 99%;
+//   left: 20%;
+//   animation-duration: 22s;
+//   animation-delay: -24s;
+//   transform-origin: -22vw 24vh;
+//   box-shadow: -40vmin 0 5.57425241181261vmin currentColor;
+// }
+// .background span:nth-child(5) {
+//   color: #FFACAC;
+//   top: 8%;
+//   left: 39%;
+//   animation-duration: 41s;
+//   animation-delay: -27s;
+//   transform-origin: 21vw 4vh;
+//   box-shadow: 40vmin 0 5.683290105121227vmin currentColor;
+// }
+// .background span:nth-child(6) {
+//   color: #583C87;
+//   top: 34%;
+//   left: 62%;
+//   animation-duration: 6s;
+//   animation-delay: -16s;
+//   transform-origin: 24vw -13vh;
+//   box-shadow: -40vmin 0 5.801270604158012vmin currentColor;
+// }

@@ -81,19 +81,19 @@ app.get('/login/:id', (req, res) => {
     featured.getFeaturedItems(),
     items.getAllItems()
   ])
-  .then(([featuredItems, allItems]) => {
+    .then(([featuredItems, allItems]) => {
 
-    const templateVars = {
-      featuredItems: featuredItems,
-      allItems: allItems
-    }
-    console.log(templateVars);
-    res.render('index', templateVars)
-  })
-  .catch(err => {
-    res.status(500)
-    console.log('Server Error', err)
-  })
+      const templateVars = {
+        featuredItems: featuredItems,
+        allItems: allItems
+      };
+      console.log(templateVars);
+      res.render('index', templateVars);
+    })
+    .catch(err => {
+      res.status(500);
+      console.log('Server Error', err);
+    });
 });
 
 app.listen(PORT, () => {
