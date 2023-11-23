@@ -6,6 +6,8 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const featured = require('./db/queries/get_featured_items');
+const items = require('./db/queries/get_all_items');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -31,14 +33,17 @@ app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
+const userApiRoutes = require('./routes/api/users-api');
+const widgetApiRoutes = require('./routes/api/widgets-api');
 const usersRoutes = require('./routes/users');
 
-// New Routes Added
+// Routes To Pages
 const listingRoutes = require('./routes/listings');
 const messageRoutes = require('./routes/messages');
 const favouriteRoutes = require('./routes/favourites');
+
+// API Routes
+const itemApiRoutes = require('./routes/api/items-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -47,10 +52,13 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 
-//New Routes Added
+// Routes To Pages
 app.use('/listings', listingRoutes);
 app.use('/messages', messageRoutes);
 app.use('/favourites', favouriteRoutes);
+
+// API Endpoints
+app.use('/api/items', itemApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
@@ -58,15 +66,34 @@ app.use('/favourites', favouriteRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+/*
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index')
 });
+*/
 
 // localhost:8080/login/1
 // localhost:8080/login/2
 app.get('/login/:id', (req, res) => {
   res.cookie('user_id', req.params.id);
-  res.redirect('/');
+
+  Promise.all([
+    featured.getFeaturedItems(),
+    items.getAllItems()
+  ])
+  .then(([featuredItems, allItems]) => {
+
+    const templateVars = {
+      featuredItems: featuredItems,
+      allItems: allItems
+    }
+    console.log(templateVars);
+    res.render('index', templateVars)
+  })
+  .catch(err => {
+    res.status(500)
+    console.log('Server Error', err)
+  })
 });
 
 app.listen(PORT, () => {
