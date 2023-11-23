@@ -87,7 +87,7 @@ app.get('/login/:id', (req, res) => {
 
     const templateVars = {
       featuredItems: featuredItems,
-      allItems: allItems
+      listedItems: allItems
     }
     console.log(templateVars);
     res.render('index', templateVars)
