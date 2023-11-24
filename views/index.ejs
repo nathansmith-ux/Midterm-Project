@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/favourites.js"></script>
 </head>
 
 <body>
@@ -68,7 +69,7 @@
           <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
           <p><strong><%= featuredItems[i].title %></strong> <em><% featuredItems[i].description %></em></p>
           <div class="image-actions">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" data-item-id="<%= featuredItems[i].id%>"></i>
             <i class="fas fa-envelope"></i>
             <i class="fas fa-cog"></i>
           </div>
@@ -99,7 +100,7 @@
               <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
               <p><strong><%= listedItems[i].title %></strong> <em><% listedItems[i].description %></em></p>
               <div class="image-actions">
-                <i class="fas fa-heart"></i> <!-- Like icon -->
+                <i class="fas fa-heart" data-item-id="<%= listedItems[i].id%>"></i> <!-- Like icon -->
                 <i class="fas fa-envelope"></i> <!-- Message icon -->
                 <i class="fas fa-cog"></i> <!-- Edit icon -->
               </div>
