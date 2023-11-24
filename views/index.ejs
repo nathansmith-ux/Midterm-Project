@@ -59,7 +59,7 @@
     <h1>✨ Featured Items ✨</h1>
     <% if (featuredItems) { %>
       <div class="row">
-        <% for (let i = 0; i < featuredItems.length; i++) { %>
+        <% for (let i = 0; i < 4; i++) { %>
           <div class="col-md-3 shoe-product">
             <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= featuredItems[i].title %>">
             <p><strong><%= featuredItems[i].title %></strong> <em><%= featuredItems[i].description %></em></p>
