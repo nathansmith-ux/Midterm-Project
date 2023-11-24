@@ -397,8 +397,28 @@ a:hover {
   color: #337ab7; /* Change color on hover */
 }
 
-/* Footer styles */
 footer {
-  border-width: 5px, black;
+  background-color: rgb(125, 12, 12);
+  padding: 20px 0;
+  text-align: center;
   color: white;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333333;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
