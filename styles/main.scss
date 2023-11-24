@@ -16,8 +16,12 @@ body {
 
 
 /* Header styles */
-h1 {
-  color: #333;
+h1, .filter-container {
+  background-color: #f0f0f0;
+  border: 3px solid #bcbcbc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 /* Navbar styles */
@@ -132,6 +136,13 @@ a:hover {
 .jumbotron p {
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+/* Shoes related CSS*/
+
+.shoe-img {
+  height: 250px;
+  width: 100%;
 }
 
 /* ----------------------------------------------
