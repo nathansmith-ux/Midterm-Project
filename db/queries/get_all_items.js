@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 const getAllItems = () => {
-  return db.query(`SELECT * FROM items;`)
+  return db.query(`SELECT * FROM items WHERE featured = false;`)
     .then(data => data.rows)
     .catch(err => console.log('SQL error', err));
 };
