@@ -8,10 +8,10 @@ router.post('/', (req, res) => {
 
   favourite.addFavourite(userId, itemId)
   .then(itemFavourited => {
-    res.send('This product has been added to your favourites!', itemFavourited)
+    res.status(201).json({ message: 'This product has been added to your favourites', item: itemFavourited });
   })
   .catch(err => {
-    res.status(500).send("We weren't able to add the item to your favourites", err)
+    res.status(500).json({ error: "We weren't able to add the item to your favourites", details: err })
     console.log('Server error', err)
   })
 
