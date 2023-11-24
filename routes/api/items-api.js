@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const price = require('../../db/queries/get_item_by_price');
 const item = require('../../db/queries/add_listing');
+const seller = require('../../db/queries/update_seller');
 
 // Gets items matching a specific filter
 router.get('/', (req, res) => {
@@ -22,16 +23,14 @@ router.get('/', (req, res) => {
 // Adds new item to database
 router.post('/add-item', (req, res) => {
   const itemInfo = req.body;
+  const userId = req.body.seller_id
 
   item.addListing(itemInfo)
   .then(newItem => {
-    const templateVars = {
-      item: newItem
-    }
-
-    console.log(templateVars)
-
-    res.render('success', templateVars)
+    return seller.updateSeller(userId)
+    .then(() => {
+      res.json({ newItem });
+    });
   })
   .catch(err => {
     res.status(500).send('An error occurred when entering in your item information', err)
