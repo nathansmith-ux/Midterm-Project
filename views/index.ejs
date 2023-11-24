@@ -64,9 +64,9 @@
             <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= featuredItems[i].title %>">
             <p><strong><%= featuredItems[i].title %></strong> <em><%= featuredItems[i].description %></em></p>
             <div class="image-actions">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-envelope"></i>
-              <i class="fas fa-cog"></i>
+              <i class="fas fa-heart" data-action="like" data-item-id="<%= featuredItems[i].id %>"></i>
+              <i class="fas fa-envelope" data-action="message" data-item-id="<%= featuredItems[i].id %>"></i>
+              <i class="fas fa-cog" data-action="edit" data-item-id="<%= featuredItems[i].id %>"></i>
             </div>
           </div>
         <% } %>
