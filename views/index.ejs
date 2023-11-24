@@ -55,73 +55,72 @@
     <h1>Sellify</h1>
   </div>
   <!-- featured items -->
-  <div class="featured-items-container">
+  <div class="container text-center">
+    <h1>✨ Featured Items ✨</h1>
     <% if (featuredItems) { %>
-      <% for (let i = 0; i < featuredItems.length; i++) { %>
-        <div class="col-md-3 shoe-product">
-          <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="Designer Sunglasses Inspired Art">
-          <p><strong><%= featuredItems[i].title %></strong> <em><% featuredItems[i].description %></em></p>
-          <div class="image-actions">
-            <i class="fas fa-heart"></i>
-            <i class="fas fa-envelope"></i>
-            <i class="fas fa-cog"></i>
+      <div class="row">
+        <% for (let i = 0; i < featuredItems.length; i++) { %>
+          <div class="col-md-3 shoe-product">
+            <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= featuredItems[i].title %>">
+            <p><strong><%= featuredItems[i].title %></strong> <em><%= featuredItems[i].description %></em></p>
+            <div class="image-actions">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-envelope"></i>
+              <i class="fas fa-cog"></i>
+            </div>
           </div>
-        </div>
         <% } %>
+      </div>
     <% } %>
   </div>
+
   <!-- Price Filter -->
-  <div class="container mt-5">
+  <div class=" container mt-5">
     <h2>Filter by Price Range</h2>
     <form>
-        <!-- Price Range Fields -->
-        <div class="form-row">
-          <div class="form-group col-md-6">
-              <label for="minPrice">Minimum Price</label>
-              <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Enter minimum price">
-          </div>
-          <div class="form-group col-md-6">
-              <label for="maxPrice">Maximum Price</label>
-              <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Enter maximum price">
-          </div>
+      <!-- Price Range Fields -->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="minPrice">Minimum Price</label>
+          <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Enter minimum price">
         </div>
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Search</button>
+        <div class="form-group col-md-6">
+          <label for="maxPrice">Maximum Price</label>
+          <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Enter maximum price">
+        </div>
+      </div>
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
-      <!-- listed items -->
-      <div class="listed-items-container">
+
+<!-- listed items -->
+<div class="container text-center">
+  <% if (listedItems) { %>
+    <% for (let i = 0; i < listedItems.length; i++) { %>
+      <!-- Start a new row for every 4 items -->
+      <% if (i % 4 === 0) { %>
+        <% if (i !== 0) { %></div><% } %><!-- Close the previous row if not the first iteration -->
         <div class="row">
-          <% if (listedItems) { %>
-            <% for (let i = 0; i < 4; i++) { %>
-              <div class="col-md-3 text-center">
-                <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
-                <p><strong><%= listedItems[i].title %></strong> <em><% listedItems[i].description %></em></p>
-                <div class="image-actions">
-                  <i class="fas fa-heart"></i> <!-- Like icon -->
-                  <i class="fas fa-envelope"></i> <!-- Message icon -->
-                  <i class="fas fa-cog"></i> <!-- Edit icon -->
-                </div>
-              </div>
-              <% } %>
-          <% } %>
+      <% } %>
+
+      <div class="col-md-3 shoe-product text-center">
+        <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= listedItems[i].title %>">
+        <p><strong><%= listedItems[i].title %></strong> <em><%= listedItems[i].description %></em></p>
+        <div class="image-actions">
+          <i class="fas fa-heart"></i>
+          <i class="fas fa-envelope"></i>
+          <i class="fas fa-cog"></i>
         </div>
-        <div class="row">
-          <% if (listedItems) { %>
-            <% for (let i = 5; i < 9; i++) { %>
-              <div class="col-md-3 text-center">
-                <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive" alt="Designer Sunglasses Inspired Art">
-                <p><strong><%= listedItems[i].title %></strong> <em><% listedItems[i].description %></em></p>
-                <div class="image-actions">
-                  <i class="fas fa-heart"></i> <!-- Like icon -->
-                  <i class="fas fa-envelope"></i> <!-- Message icon -->
-                  <i class="fas fa-cog"></i> <!-- Edit icon -->
-                </div>
-              </div>
-              <% } %>
-          <% } %>
-        </div>
-        </div>
+      </div>
+
+      <!-- Close the row after the fourth item or at the end of the array -->
+      <% if ((i % 4 === 3) || (i === listedItems.length - 1)) { %>
+        </div> <!-- Close the row -->
+      <% } %>
+    <% } %>
+  <% } %>
+</div>
 
          <!-- spans for balls -->
   <div class="background">
