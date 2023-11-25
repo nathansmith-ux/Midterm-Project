@@ -22,10 +22,9 @@
   <!-- displayItems function -->
   <%
 function displayItems(itemsArray, maxRows) {
-  maxRows = maxRows || 6; // Default to 6
+  maxRows = maxRows || 6; // Defaults to 6 without input
   for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
     if (i % 4 === 0) {
-      if (i !== 0) { %></div><% }
       %><div class="row gy-10 gx-10"><%
     }
     %>

@@ -9,3 +9,4 @@ CREATE TABLE messages (
   content TEXT NOT NULL,
   read BOOLEAN NOT NULL DEFAULT FALSE
 );
+
