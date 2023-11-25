@@ -1,24 +1,73 @@
+<!-- messages.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>messages</title>
-
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message</title>
 </head>
-
 <body>
-  <h1>Heres all your messages</h1>
-</body>
 
+  <h1>Send a Message</h1>
+
+  <form id="messageForm">
+    <label for="senderId">Sender ID:</label>
+    <input type="text" id="senderId" name="senderId" required>
+
+    <label for="sellerId">reciver ID:</label>
+    <input type="text" id="reciver" name="reciverId" required>
+
+    <label for="content">Message Content:</label>
+    <textarea id="content" name="content" required></textarea>
+
+    <button type="button" onclick="sendMessage()">Send Message</button>
+  </form>
+
+  <script>
+    function sendMessage() {
+      // Get form data
+      const senderId = document.getElementById('senderId').value;
+      const sellerId = document.getElementById('sellerId').value;
+      const content = document.getElementById('content').value;
+
+      // Make POST request
+        // Make AJAX request
+    // $.ajax({
+    //   url: '/',
+    //   method: 'POST',
+    //   contentType: 'application/json',
+    //   data: JSON.parse({ senderId, sellerId, content }),
+    //   success: function(data) {
+    //     console.log('Response:', data);
+    //     alert(data.message); // Show a message to the user
+    //   },
+    //   error: function(error) {
+    //     console.error('Error:', error);
+    //     alert('An error occurred. Please try again.');
+    //   },
+    // });
+     // Make POST request
+     fetch('/your-api-endpoint/add-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ senderId, sellerId, content }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Response:', data);
+        alert(data.message); // Show a message to the user
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      });
+
+  }
+    
+  </script>
+
+</body>
 </html>

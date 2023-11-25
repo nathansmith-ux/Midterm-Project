@@ -433,3 +433,46 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+// main.scss
+
+.navbar-header {
+  padding: 5px; /* Adjust padding as needed */
+
+  // Additional styling
+  background-color: #3498db; /* Example background color */
+  color: #fff; /* Example text color */
+  font-size: 1.2em; /* Example font size */
+}
+
+
+// .navbar-header {
+//   padding: 5px;
+//   background-color: #3498db;
+//   color: #fff;
+//   font-size: 1.2em;
+
+//   // Fixed position
+//   position: fixed;
+//   top: 0;
+//   width: 100%;
+//   z-index: 1000; // Adjust the z-index as needed
+// }
+
+
+.navbar-nav li {
+  list-style-type: none;
+}
+
+.page-header {
+  &__user-links {
+    ul {
+      list-style: none;
+      display: flex;
+      li {
+        padding: 0;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
