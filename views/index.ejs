@@ -23,7 +23,7 @@
   <%
 function displayItems(itemsArray, maxRows) {
   maxRows = maxRows || 6; // Default to 6
-  for (let i = 4; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+  for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
     if (i % 4 === 0) {
       if (i !== 0) { %></div><% }
       %><div class="row gy-10 gx-10"><%
@@ -74,6 +74,7 @@ function displayItems(itemsArray, maxRows) {
           <li><a href="#">Sign out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
+
     </div><!-- /.container-fluid -->
   </nav>
 
@@ -142,6 +143,18 @@ function displayItems(itemsArray, maxRows) {
     <span></span>
     <span></span>
  </div>
+
+ <footer>
+  <div class="container">
+      <p>&copy; 2023 My Website</p>
+      <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+      </ul>
+  </div>
+</footer>
+
         <script>
           $(document).ready(function() {
             $('.image-actions i').on('click', function() {
