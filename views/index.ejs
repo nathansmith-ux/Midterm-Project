@@ -23,7 +23,7 @@
   <%
 function displayItems(itemsArray, maxRows) {
   maxRows = maxRows || 6; // Default to 6
-  for (let i = 4; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+  for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
     if (i % 4 === 0) {
       if (i !== 0) { %></div><% }
       %><div class="row gy-10 gx-10"><%
@@ -82,27 +82,6 @@ function displayItems(itemsArray, maxRows) {
   <div class="jumbotron">
     <h1>Sellify</h1>
   </div>
-<<<<<<< HEAD
-  <!-- featured items -->
-  <div class="container text-center">
-    <h1>✨ Featured Items ✨</h1>
-    <% if (featuredItems) { %>
-      <div class="row">
-        <% for (let i = 0; i < featuredItems.length; i++) { %>
-          <div class="col-md-3 shoe-product">
-            <img src="<%= featuredItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= featuredItems[i].title %>">
-            <p><strong><%= featuredItems[i].title %></strong> <em><%= featuredItems[i].description %></em></p>
-            <div class="image-actions">
-              <i class="fas fa-heart" data-action="like" data-item-id="<%= featuredItems[i].id %>"></i>
-              <i class="fas fa-envelope" data-action="message" data-item-id="<%= featuredItems[i].id %>"></i>
-              <i class="fas fa-cog" data-action="edit" data-item-id="<%= featuredItems[i].id %>"></i>
-            </div>
-          </div>
-        <% } %>
-      </div>
-    <% } %>
-  </div>
-=======
 
 <!-- featured items -->
 <div class="featured-items-container container text-center">
@@ -112,7 +91,6 @@ function displayItems(itemsArray, maxRows) {
      }
   %>
 </div>
->>>>>>> master
 
   <!-- Price Filter -->
   <div class="filter-container container mt-5">
@@ -134,44 +112,6 @@ function displayItems(itemsArray, maxRows) {
     </form>
   </div>
 
-<<<<<<< HEAD
-      <!-- listed items -->
-      <div class="container text-center">
-        <% if (listedItems) { %>
-          <!-- First Row -->
-          <div class="row">
-            <% for (let i = 5; i < 9; i++) { %>
-              <div class="col-md-3 shoe-product text-center">
-                <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= listedItems[i].title %>">
-                <p><strong><%= listedItems[i].title %></strong> <em><%= listedItems[i].description %></em></p>
-                <div class="image-actions">
-                  <i class="fas fa-heart"></i>
-                  <i class="fas fa-envelope"></i>
-                  <i class="fas fa-cog"></i>
-                </div>
-              </div>
-            <% } %>
-          </div>
-
-          <!-- Second Row -->
-          <div class="row">
-            <% for (let i = 10; i < 14 && i < listedItems.length; i++) { %>
-              <div class="col-md-3 shoe-product text-center">
-                <img src="<%= listedItems[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= listedItems[i].title %>">
-                <p><strong><%= listedItems[i].title %></strong> <em><%= listedItems[i].description %></em></p>
-                <div class="image-actions">
-                  <i class="fas fa-heart"></i>
-                  <i class="fas fa-envelope"></i>
-                  <i class="fas fa-cog"></i>
-                </div>
-              </div>
-            <% } %>
-          </div>
-        <% } %>
-      </div>
-
-         <!-- spans for balls -->
-=======
   <!-- listed items -->
   <div class="listed-items-container container text-center">
     <% if (listedItems) {
@@ -181,7 +121,6 @@ function displayItems(itemsArray, maxRows) {
   </div>
 
   <!-- spans for balls -->
->>>>>>> master
   <div class="background">
     <span></span>
     <span></span>
@@ -204,7 +143,6 @@ function displayItems(itemsArray, maxRows) {
     <span></span>
     <span></span>
  </div>
-<<<<<<< HEAD
 
  <footer>
   <div class="container">
@@ -217,8 +155,6 @@ function displayItems(itemsArray, maxRows) {
   </div>
 </footer>
 
-=======
->>>>>>> master
         <script>
           $(document).ready(function() {
             $('.image-actions i').on('click', function() {
