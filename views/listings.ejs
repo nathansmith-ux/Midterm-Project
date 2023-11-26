@@ -30,9 +30,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          <img src="https://images7.alphacoders.com/115/1153599.jpg" class="img-fluid" alt="Responsive image">
-      </a>
+        <a class="navbar-brand" href="http://localhost:8080/login/1">
+          <img src="/images/site-images/logo2.png" class="img-responsive" alt="Responsive image">
+        </a>
 
       </div>
 
@@ -53,14 +53,20 @@
   </nav>
   <!-- Splash Logo -->
   <div class="jumbotron">
-
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button type="button" class="btn btn-primary btn-lg btn-lower" data-toggle="modal" data-target="#createListingModal">
+          Create a Listing
+        </button>
+      </div>
+    </div>
   </div>
 
 
     <div class="row">
       <!-- Left Jumbotron for Image -->
       <div class="col-md-4">
-        <div class="jumbotron" style="background-image: url('/images/site-images/ad2.svg');">
+        <div class="jumbotron" style="background-image: url('/images/site-images/ad3.png');">
           <!-- Background image set via inline CSS or external CSS -->
         </div>
       </div>
@@ -136,6 +142,7 @@
     <span></span>
     <span></span>
     <span></span>
+    <!-- <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -150,8 +157,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <span></span>
-    <span></span>
+    <span></span> -->
  </div>
 
  <footer>
@@ -164,6 +170,46 @@
       </ul>
   </div>
 </footer>
+<!-- Modal -->
+<div class="modal fade" id="createListingModal" tabindex="-1" role="dialog" aria-labelledby="createListingModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createListingModalLabel">Create a Listing</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Your form goes here, copy and paste your form code inside this div -->
+        <form>
+          <div class="form-group">
+            <label for="listingTitle">Title</label>
+            <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
+          </div>
+          <div class="form-group">
+            <label for="listingPrice">Price</label>
+            <input type="number" class="form-control" id="listingPrice" placeholder="Price">
+          </div>
+          <div class="form-group">
+            <label for="listingDescription">Description</label>
+            <textarea class="form-control" id="listingDescription" placeholder="Description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="listingThumbnailUrl">Thumbnail Photo URL</label>
+            <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
+          </div>
+          <button type="submit" class="btn btn-primary">Create Listing</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create Listing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <script>
           $(document).ready(function() {

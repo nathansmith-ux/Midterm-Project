@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/favourites.css" />
   <!-- Boot strap and font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -29,9 +30,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          <img src="https://images7.alphacoders.com/115/1153599.jpg" class="img-responsive" alt="Responsive image">
-      </a>
+        <a class="navbar-brand" href="http://localhost:8080/login/1">
+          <img src="/images/site-images/logo2.png" class="img-responsive" alt="Responsive image">
+        </a>
 
       </div>
 
@@ -55,24 +56,27 @@
   </div>
 
   <div class="container text-center">
-    <% if (favourites) { %>
+    <% if (favourites && favourites.length > 0) { %>
       <div class="row">
-        <% for (let i = 0; i < favourites.length; i++) { %>
+        <% favourites.slice(0, 4).forEach(favourite => { %>
           <div class="col-md-3 shoe-product">
-            <img src="<%= favourites[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites[i].title %>">
-            <p><strong><%= favourites[i].title %></strong> <em><%= favourites[i].description %></em></p>
+            <img src="/images/user-images/person-2.png" alt="Profile Picture" class="profile-pic">
+            <span>Tony Tuesdays</span>
+            <img src="<%= favourite.thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourite.title %>">
             <div class="image-actions">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-envelope"></i>
-              <i class="fas fa-cog"></i>
+              <i class="fas fa-heart" data-item-id="<%= favourite.id %>"></i>
+              <i class="fas fa-envelope" data-item-id="<%= favourite.id %>"></i>
+              <i class="fas fa-cog" data-item-id="<%= favourite.id %>"></i>
             </div>
+            <p><strong><%= favourite.title %></strong> <em><%= favourite.description %> - <strong>$<%= favourite.price %></strong></em></p>
           </div>
-        <% } %>
+        <% }) %>
       </div>
     <% } %>
   </div>
 
   <div class="background">
+    <!-- <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -83,8 +87,7 @@
     <span></span>
     <span></span>
     <span></span>
-    <span></span>
-    <span></span>
+    <span></span> -->
     <span></span>
     <span></span>
     <span></span>

@@ -8,42 +8,41 @@ body {
   }
 }
 
-.navbar-default {
-  background-image: url('/images/site-images/navbarImg1.png');
-  background-size: cover;
-  background-position: center;
-  color: #000;
-
-  .navbar-nav > li > a {
-    background-color: #fff; // White background for the buttons
-    color: #000; // Text color for the buttons
-    padding: 5px 10px; // Padding to make them look like buttons
-    margin: 5px; // Margin to add some space around each button
-    border-radius: 4px; // Rounded corners for the buttons
-
-    &:hover, &:focus {
-      color: #000; // Text color when hovered or focused
-      background-color: #bb9b9b; // Slightly different background on hover
-
-    }
-  }
-}
-
 .jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
   padding-top: 100px;
   padding-bottom: 100px;
-  height: 500px;
+  height: 400px;
   background-color: rgba(128, 128, 128, 0.638);
   background-image: url('/images/site-images/promoSellingBanner.png');
 }
 
 .jumbotron.form-jumbotron {
-  background-image: url('/path/to/your/texture.jpg'); /* Path to your texture image */
   background-size: cover;
   background-position: center;
   z-index: 1;
   background-image: linear-gradient( 135deg, #81FFEF 10%, #F067B4 100%);
   /* Other styling as needed */
 }
+
+.btn {
+  background-color: #fff; // White background for the buttons
+  color: #000; // Text color for the buttons
+  padding: 5px 10px; // Padding to make them look like buttons
+  margin: 5px; // Margin to add some space around each button
+  border-radius: 4px; // Rounded corners for the buttons
+
+  &:hover, &:focus {
+    color: #000; // Text color when hovered or focused
+    background-color: #bb9b9b; // Slightly different background on hover
+  }
+}
+
+.btn-lower {
+  margin-top: 250px;
+}
+

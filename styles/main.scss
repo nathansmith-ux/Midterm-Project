@@ -10,7 +10,8 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f4f4f4;
-  padding: 20px
+  padding: 0px;
+  margin: 0px;
 
 }
 
@@ -23,13 +24,19 @@ h1, .filter-container {
   margin: 10px 0;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
 /* Navbar styles */
 .navbar-default {
-  background-color: #758298;
-  border-color: #431717;
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Set the top position to align with the top of the viewport */
   width: 100%; /* Ensure the navbar spans the entire width */
+  margin-bottom: 0px;
 }
 
 .navbar-collapse {
@@ -75,6 +82,8 @@ a:hover {
 .navbar-nav {
   display: flex;
   list-style: none;
+  font-family: 'Abril Fatface', serif;
+ font-family: 'Roboto Serif', serif;
 }
 
 .navbar-nav li a {
@@ -88,6 +97,8 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 .dropdown-menu li a {
@@ -114,6 +125,7 @@ a:hover {
   height: 500px;
   background-color: rgba(128, 128, 128, 0.638);
   background-image: url('/images/site-images/featuredSplash.png');
+  margin-top: 0px;
 }
 
 .jumbotron h1 {
@@ -130,6 +142,8 @@ a:hover {
 .jumbotron p {
   font-size: 20px;
   margin-bottom: 20px;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 
@@ -154,9 +168,10 @@ a:hover {
   height: 100vh;
   top: 0;
   left: 0;
-  background: #dfdfdf;
+  background: #ffffff;
   overflow: hidden;
   z-index: -1;
+  background-image: url('/images/site-images/background1.png');
 }
 
 .background span {
@@ -385,6 +400,8 @@ a:hover {
 .row .col-md-3 p {
   text-align: center; /* Center-align the text */
   /* Additional styles here */
+  font-family: 'Abril Fatface', serif;
+font-family: 'Roboto Serif', serif;
 }
 
 .col-md-3 p {
@@ -395,6 +412,19 @@ a:hover {
   border-radius: 5px;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 60px; /* Adjust as needed */
+  height: 70px; /* Adjust as needed */
+  border-radius: 50%; /* Makes the image circular */
+  margin-right: 10px;
+}
+
 .image-actions {
   display: flex;
   justify-content: center;
@@ -403,6 +433,7 @@ a:hover {
   padding: 10px; /* Add padding for better aesthetics */
   margin-bottom: 5px; /* Optional: to make the border connect seamlessly with the previous element */
   border-radius: 5px;
+  background-image: url('/images/site-images/cork-board.png');
 }
 
 
@@ -425,7 +456,10 @@ a:hover {
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   text-align: center;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
   width: calc(25% - 10px); /* Adjust width to account for margin */
+  background-image: url('/images/site-images/itemBackground2.png');
 }
 
 /* Media query for viewports under 1000px */
@@ -457,7 +491,7 @@ a:hover {
 }
 
 .col-md-3.shoe-product .image-actions i {
-  color: #fcdbdb; /* Bootstrap primary color for icons */
+  color: #1d01018e; /* Bootstrap primary color for icons */
   margin: 0 5px; /* Spacing around icons */
   cursor: pointer; /* Changes cursor to pointer on hover */
 }
@@ -468,7 +502,9 @@ a:hover {
 
 .col-md-3.shoe-product p {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 footer {
