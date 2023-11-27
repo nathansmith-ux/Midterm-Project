@@ -28,7 +28,7 @@
 </head>
 
 <body>
-<!-- displayItems function -->
+<!-- displayItems function --> 
 <%
 function displayItems(itemsArray, maxRows) {
   maxRows = maxRows || 6; // Defaults to 6 without input
@@ -38,8 +38,9 @@ function displayItems(itemsArray, maxRows) {
     }
     %>
     <div class="col-md-3 shoe-product">
-      <img src="/images/user-images/person-6.png" alt="Marina Marbles Profile Picture" class="profile-pic">
-      <span><strong>Marina Marbles</strong></span>
+      <!-- src="users." -->
+      <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
+      <span><strong><%= itemsArray[i].name %></strong></span>
       <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
       <div class="image-actions">
         <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
