@@ -74,7 +74,14 @@
         <!-- Form Column -->
         <div class="col-md-4">
           <div class="jumbotron" style="background-image: url('/images/site-images/coolHue-81FFEF-F067B4.png');">
-          <form>
+            <!-- If no listings -->
+            <div class="listings-items-container container text-center">
+              <% if (listings.length === 0) { %>
+                <div class="no-listings"><p>Looks Like You Have Yet To Become A Seller!</p></div>
+              <% } %>
+            </div>
+
+          <!-- <form>
             <div class="form-group">
               <label for="listingTitle">Title</label>
               <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
@@ -92,7 +99,7 @@
               <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
             </div>
             <button type="submit" class="btn btn-primary">Create Listing</button>
-          </form>
+          </form> -->
         </div>
       </div>
 
@@ -105,14 +112,12 @@
     </div>
 
     <!-- displayItems function -->
-    <%
-    function displayItems(itemsArray, maxRows) {
+  <% function displayItems(itemsArray, maxRows) {
       maxRows = maxRows || 6; // Defaults to 6 without input
       for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
-        if (i % 4 === 0) {
-          %><div class="row gy-10 gx-10"><%
-        }
-        %>
+        if (i % 4 === 0) { %>
+          <div class="row gy-10 gx-10">
+            <% } %>
         <div class="col-md-3 shoe-product">
           <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
           <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p>
@@ -121,18 +126,17 @@
             <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
             <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
           </div>
-        </div><%
-        if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
-        }
+        </div>
+      <% if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %>
+        </div>
+      <% }
       }
-    }
-    %>
+    } %>
 
     <div class="listings-items-container container text-center">
       <% if (listings) {
            displayItems(listings, 1); // Limit to one row
-         }
-      %>
+         } %>
     </div>
 
 
