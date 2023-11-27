@@ -28,7 +28,7 @@
 </head>
 
 <body>
-<!-- displayItems function --> 
+<!-- displayItems function -->
 <%
 function displayItems(itemsArray, maxRows) {
   maxRows = maxRows || 6; // Defaults to 6 without input
@@ -38,7 +38,6 @@ function displayItems(itemsArray, maxRows) {
     }
     %>
     <div class="col-md-3 shoe-product">
-      <!-- src="users." -->
       <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
       <span><strong><%= itemsArray[i].name %></strong></span>
       <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">

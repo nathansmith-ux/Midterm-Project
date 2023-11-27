@@ -58,7 +58,36 @@
   </div>
 
   <div class="container text-center">
-    <% if (favourites && favourites.length > 0) { %>
+    <%
+    function displayItems(itemsArray, maxRows) {
+      maxRows = maxRows || 6; // Defaults to 6 without input
+      for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+        if (i % 4 === 0) {
+          %><div class="row gy-10 gx-10"><%
+        }
+        %>
+        <div class="col-md-3 shoe-product">
+          <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
+          <span><strong><%= itemsArray[i].name %></strong></span>
+          <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
+          <div class="image-actions">
+            <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
+            <i class="fas fa-envelope" onclick="location.href='mailto:<%= itemsArray[i].seller_email %>'" data-item-id="<%= itemsArray[i].id %>"></i>
+            <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
+          </div>
+          <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
+        </div><%
+        if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
+        }
+      }
+    }
+    %>
+    <% if (favourites && favourites.length > 0) {
+      displayItems(favourites);
+    }
+ %>
+
+    <!-- <% if (favourites && favourites.length > 0) { %>
       <div class="row">
         <% favourites.slice(0, 4).forEach(favourites => { %>
           <div class="col-md-3 shoe-product">
@@ -74,7 +103,7 @@
           </div>
         <% }) %>
       </div>
-    <% } %>
+    <% } %> -->
   </div>
 
   <div class="background">
