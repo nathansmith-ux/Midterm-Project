@@ -76,24 +76,6 @@
     <% } %>
   </div>
 
-  <div class="container text-center">
-    <% if (favourites) { %>
-      <div class="row">
-        <% for (let i = 0; i < favourites.length; i++) { %>
-          <div class="col-md-3 shoe-product">
-            <img src="<%= favourites[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites[i].title %>">
-            <p><strong><%= favourites[i].title %></strong> <em><%= favourites[i].description %></em></p>
-            <div class="image-actions">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-envelope"></i>
-              <i class="fas fa-cog"></i>
-            </div>
-          </div>
-        <% } %>
-      </div>
-    <% } %>
-  </div>
-
   <div class="background">
     <!-- <span></span>
     <span></span>
