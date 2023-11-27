@@ -20,23 +20,15 @@
 
 <body>
   <h1>Heres all your messages</h1>
-
-  <div id="chat-window">
-    <!-- Messages will be displayed here -->
+  <div id="message-container">
+    <form id="message-form">
+      <label for="message-input">Enter Your Message</label>
+      <input type="text" id="message-input">
+      <label for="seller">Seller</label>
+      <input type="text" id="seller-id">
+      <button type="submit" id="send-button">Send</button>
+    </form>
   </div>
-
-  <form id="chat-form">
-    <label for="recipient">Send to:</label>
-    <select id="recipient">
-        <!-- Options for recipients will be populated here -->
-        <!-- Example: <option value="user1">User 1</option> -->
-    </select>
-
-    <label for="message-input">Message:</label>
-    <input type="text" id="message-input" placeholder="Type a message...">
-
-    <button type="submit">Send</button>
-  </form>
 </body>
 
 </html>
