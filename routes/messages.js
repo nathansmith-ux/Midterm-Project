@@ -6,10 +6,12 @@ router.get('/', (req, res) => {
   const userId = req.cookies.user_id;
 
   messages.getAllMessages(userId)
-    .then(allMessages => {
+    .then(messages => {
       const templateVars = {
-        allMessages
+        messages
       }
+
+      console.log(templateVars)
 
       res.render('messages', templateVars)
     })
