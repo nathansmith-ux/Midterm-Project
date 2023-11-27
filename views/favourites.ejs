@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+
 </head>
 
 <body>
@@ -58,19 +59,37 @@
   <div class="container text-center">
     <% if (favourites && favourites.length > 0) { %>
       <div class="row">
-        <% favourites.slice(0, 4).forEach(favourite => { %>
+        <% favourites.slice(0, 4).forEach(favourites => { %>
           <div class="col-md-3 shoe-product">
             <img src="/images/user-images/person-2.png" alt="Profile Picture" class="profile-pic">
             <span>Tony Tuesdays</span>
-            <img src="<%= favourite.thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourite.title %>">
+            <img src="<%= favourites.thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites.title %>">
             <div class="image-actions">
-              <i class="fas fa-heart" data-item-id="<%= favourite.id %>"></i>
-              <i class="fas fa-envelope" data-item-id="<%= favourite.id %>"></i>
-              <i class="fas fa-cog" data-item-id="<%= favourite.id %>"></i>
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-envelope"></i>
+              <i class="fas fa-cog"></i>
             </div>
-            <p><strong><%= favourite.title %></strong> <em><%= favourite.description %> - <strong>$<%= favourite.price %></strong></em></p>
+            <p><strong><%= favourites.title %></strong> <em><%= favourites.description %> - <strong>$<%= favourites.price %></strong></em></p>
           </div>
         <% }) %>
+      </div>
+    <% } %>
+  </div>
+
+  <div class="container text-center">
+    <% if (favourites) { %>
+      <div class="row">
+        <% for (let i = 0; i < favourites.length; i++) { %>
+          <div class="col-md-3 shoe-product">
+            <img src="<%= favourites[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites[i].title %>">
+            <p><strong><%= favourites[i].title %></strong> <em><%= favourites[i].description %></em></p>
+            <div class="image-actions">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-envelope"></i>
+              <i class="fas fa-cog"></i>
+            </div>
+          </div>
+        <% } %>
       </div>
     <% } %>
   </div>
