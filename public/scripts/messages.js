@@ -12,14 +12,10 @@ $(document).ready(function() {
       content: $messageInput
     };
 
-    console.log(message)
-
-    const data = JSON.stringify(message);
-
     $.ajax({
       type: "POST",
       url: '/api/messages',
-      data: data
+      data: message
     })
     .done(function(response) {
       console.log(response)

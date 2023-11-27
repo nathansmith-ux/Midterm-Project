@@ -7,7 +7,6 @@ router.post('/', (req, res) => {
   const { receiverId, itemId, content } = req.body;
 
   console.log(req.body);
-  console.log(senderId);
 
   messages.addMessage(senderId, receiverId, itemId, content)
     .then(newMessage => {
