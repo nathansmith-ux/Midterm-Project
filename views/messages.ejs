@@ -13,12 +13,30 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/messages.js"></script>
 </head>
 
 <body>
   <h1>Heres all your messages</h1>
+
+  <div id="chat-window">
+    <!-- Messages will be displayed here -->
+  </div>
+
+  <form id="chat-form">
+    <label for="recipient">Send to:</label>
+    <select id="recipient">
+        <!-- Options for recipients will be populated here -->
+        <!-- Example: <option value="user1">User 1</option> -->
+    </select>
+
+    <label for="message-input">Message:</label>
+    <input type="text" id="message-input" placeholder="Type a message...">
+
+    <button type="submit">Send</button>
+  </form>
 </body>
 
 </html>

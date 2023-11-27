@@ -12,7 +12,7 @@ $(document).ready(function() {
     })
     .done(function(response) {
         console.log(response);
-        $('listed-items-container').empty();
+        $('.listed-items-container').empty();
     })
   })
 })

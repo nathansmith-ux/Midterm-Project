@@ -8,9 +8,13 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const featured = require('./db/queries/get_featured_items');
 const items = require('./db/queries/get_all_items');
+const { createServer } = require('http');
+const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
 app.set('view engine', 'ejs');
 
@@ -98,6 +102,10 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
-app.listen(PORT, () => {
+io.on("connection", (socket) => {
+  console.log(socket.id)
+});
+
+httpServer.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
