@@ -125,7 +125,7 @@ a:hover {
   height: 500px;
   background-color: rgba(128, 128, 128, 0.638);
   background-image: url('/images/site-images/featuredSplash.png');
-  margin-top: 0px;
+  margin-top: -21px;
 }
 
 .jumbotron h1 {
@@ -459,7 +459,7 @@ font-family: 'Roboto Serif', serif;
   font-family: 'Abril Fatface', serif;
   font-family: 'Roboto Serif', serif;
   width: calc(25% - 10px); /* Adjust width to account for margin */
-  background-image: url('/images/site-images/itemBackground2.png');
+  background-image: url('/images/site-images/itemBackground1.png');
 }
 
 /* Media query for viewports under 1000px */
@@ -488,6 +488,7 @@ font-family: 'Roboto Serif', serif;
   max-width: 100%;
   height: auto;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .col-md-3.shoe-product .image-actions i {
