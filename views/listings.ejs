@@ -55,88 +55,93 @@
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-primary btn-lg btn-lower" data-toggle="modal" data-target="#createListingModal">
-          Create a Listing
+        <!-- Create Listing Button-->
+        <button type="button" class="btn btn-primary btn-lg btn-lower create-listing-button" data-toggle="modal" data-target="#createListingModal">
+          Create a Listing <i class="fa-solid fa-plus"></i>
         </button>
       </div>
     </div>
   </div>
 
+      <!-- displayItems function -->
+      <% function displayItems(itemsArray, maxRows) {
+        maxRows = maxRows || 6; // Defaults to 6 without input
+        for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+          if (i % 4 === 0) { %>
+            <div class="row gy-10 gx-10">
+              <% } %>
+          <div class="col-md-3 shoe-product">
+            <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
+            <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p>
+            <div class="image-actions">
+              <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
+              <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
+              <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
+            </div>
+          </div>
+        <% if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %>
+          </div>
+        <% }
+        }
+      } %>
+      <!-- Displaying Listings -->
+      <div class="listings-items-container container text-center">
+        <% if (listings.length > 0) { %>
+          <h1>My Listings</h1>
+          <% displayItems(listings, 1); // Limit to one row
+          } %>
+      </div>
+          <!-- Form Column -->
+          <!-- <% if (listings.length === 0) { %>
+          <div class="col-md-12">
+            <div class="jumbotron" style="background-image: url('/images/site-images/coolHue-81FFEF-F067B4.png');">
+              <div class="listings-items-container container text-center">
+                  <div class="no-listings"><p>Looks Like You Have Yet To List An Item!</p></div>
+                </div> -->
 
+                <!-- <form>
+                  <div class="form-group">
+                    <label for="listingTitle">Title</label>
+                    <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="listingPrice">Price</label>
+                    <input type="number" class="form-control" id="listingPrice" placeholder="Price">
+                  </div>
+                  <div class="form-group">
+                    <label for="listingDescription">Description</label>
+                    <textarea class="form-control" id="listingDescription" placeholder="Description" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="listingThumbnailUrl">Thumbnail Photo URL</label>
+                    <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Create Listing</button>
+                </form> -->
+              <!-- </div>
+            </div>
+            <% } %> -->
+    <!-- Mock Ads-->
     <div class="row">
       <!-- Left Jumbotron for Image -->
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="jumbotron" style="background-image: url('/images/site-images/ad3.png');">
           <!-- Background image set via inline CSS or external CSS -->
         </div>
       </div>
 
-        <!-- Form Column -->
-        <div class="col-md-4">
-          <div class="jumbotron" style="background-image: url('/images/site-images/coolHue-81FFEF-F067B4.png');">
-          <form>
-            <div class="form-group">
-              <label for="listingTitle">Title</label>
-              <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
-            </div>
-            <div class="form-group">
-              <label for="listingPrice">Price</label>
-              <input type="number" class="form-control" id="listingPrice" placeholder="Price">
-            </div>
-            <div class="form-group">
-              <label for="listingDescription">Description</label>
-              <textarea class="form-control" id="listingDescription" placeholder="Description" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="listingThumbnailUrl">Thumbnail Photo URL</label>
-              <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
-            </div>
-            <button type="submit" class="btn btn-primary">Create Listing</button>
-          </form>
-        </div>
-      </div>
 
       <!-- Right Jumbotron for Image -->
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="jumbotron" style="background-image: url('/images/site-images/smallPromo.png');">
           <!-- Background image set via inline CSS or external CSS -->
         </div>
       </div>
     </div>
 
-    <!-- displayItems function -->
-    <%
-    function displayItems(itemsArray, maxRows) {
-      maxRows = maxRows || 6; // Defaults to 6 without input
-      for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
-        if (i % 4 === 0) {
-          %><div class="row gy-10 gx-10"><%
-        }
-        %>
-        <div class="col-md-3 shoe-product">
-          <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
-          <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p>
-          <div class="image-actions">
-            <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
-            <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
-            <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
-          </div>
-        </div><%
-        if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
-        }
-      }
-    }
-    %>
-
-    <div class="listings-items-container container text-center">
-      <% if (listings) {
-           displayItems(listings, 1); // Limit to one row
-         }
-      %>
-    </div>
 
 
-
+    <!-- Background ball animation -->
   <div class="background">
     <span></span>
     <span></span>

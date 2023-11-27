@@ -11,7 +11,7 @@ INSERT INTO items (seller_id, title, price, description, date_posted, featured, 
 VALUES (2, 'Women’s High Heels', 45, 'Elegant high heels for evening wear, size 7', '2023-01-08', true, '/images/item-images/item-3.png');
 
 INSERT INTO items (seller_id, title, price, description, date_posted, featured, thumbnail_photo_url)
-VALUES (2, 'Sports Running Shoes', 63, 'Lightweight and breathable running shoes, size 8', '2023-01-09', true, '/images/item-images/item-4.png');
+VALUES (2, 'Sports Running Shoes', 63, 'Lightweight and breathable, size 8', '2023-01-09', true, '/images/item-images/item-4.png');
 
 -- Items Sold By Alice Johnson
 INSERT INTO items (seller_id, title, price, description, date_posted, thumbnail_photo_url)
@@ -25,7 +25,7 @@ INSERT INTO items (seller_id, title, price, description, date_posted, thumbnail_
 VALUES (4, 'Cycling Shoes', 121, 'Performance-oriented cycling shoes, size 11', '2023-01-12', '/images/item-images/item-7.png');
 
 INSERT INTO items (seller_id, title, price, description, date_posted, thumbnail_photo_url)
-VALUES (4, 'Skateboarding Shoes', 142, 'Durable shoes for skateboarding enthusiasts, size 10', '2023-01-13', '/images/item-images/item-8.png');
+VALUES (4, 'Skateboarding Shoes', 142, 'Durable shoes, size 10', '2023-01-13', '/images/item-images/item-8.png');
 
 -- Items Sold By Emily Brown
 INSERT INTO items (seller_id, title, price, description, date_posted, thumbnail_photo_url)
