@@ -509,10 +509,14 @@ font-family: 'Roboto Serif', serif;
 }
 
 footer {
-  background-color: rgb(125, 12, 12);
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 20px 0;
   text-align: center;
-  color: white;
+  color: #337ab7;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 footer ul {
@@ -523,13 +527,14 @@ footer ul {
 footer ul li {
   display: inline;
   margin: 0 10px;
+  color: #337ab7;
 }
 
 footer a {
+  color: #337ab7;
   text-decoration: none;
-  color: #ffffff;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: #23527c;
 }
