@@ -106,7 +106,18 @@ app.get('/login/:id', (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id)
+  io.emit('welcome-message', "Welcome To Our In App Chat System")
+
+  // Creates room for each user id
+  socket.on('login', (data) => {
+    const userId = data.userId
+    socket.join(userId)
+  })
+
+  // Sends message to user id
+  socket.on('send message', (data) => {
+    io.to(data.to).emit('receive message', { from: socket.id, message: data.message})
+  })
 });
 
 httpServer.listen(PORT, () => {
