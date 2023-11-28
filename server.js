@@ -105,18 +105,31 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
-io.on("connection", (socket) => {
-  io.emit('welcome-message', "Welcome To Our In App Chat System")
+let socketMap = {};
 
-  // Creates room for each user id
-  socket.on('login', (data) => {
-    const userId = data.userId
-    socket.join(userId)
+io.on("connect", (socket) => {
+  io.emit('welcome-message', "You Are Connected To Our Chat System")
+
+  // Ties User To Socket Id On Server
+  socket.on('login', (userInfo) => {
+    const userId = userInfo.userId
+    const socketId = userInfo.socketId
+
+    socketMap[userId] = socketId
+
+    console.log(`Logged in as ${userId} and with socket id of ${socketId}`)
+
+      // Listening for sent message, then responding with action
+  socket.on('sent message', message => {
+    console.log('The message content is', message.content);
+    console.log('This message is from', message.buyer);
+    console.log('This message is going to', message.seller)
+
+    const sellerSocketId = socketMap[message.seller];
+    if (sellerSocketId) {
+      io.to(sellerSocketId).emit('receive message', message.content)
+    }
   })
-
-  // Sends message to user id
-  socket.on('send message', (data) => {
-    io.to(data.to).emit('receive message', { from: socket.id, message: data.message})
   })
 });
 

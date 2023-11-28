@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
   const senderId = req.cookies.user_id;
   const { receiverId, itemId, content } = req.body;
 
-  console.log(req.body);
+  // console.log(req.body);
 
   messages.addMessage(senderId, receiverId, itemId, content)
     .then(newMessage => {

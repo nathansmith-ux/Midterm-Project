@@ -6,6 +6,11 @@ $(document).ready(function() {
       console.log(message);
     });
 
+    // Receiving Message From The Server
+    socket.on('receive message', content => {
+      console.log(content);
+      })
+
     function getUserId() {
       $.ajax({
         type: "GET",
@@ -14,7 +19,13 @@ $(document).ready(function() {
       .done(function(response) {
         const userId = response.user[0].id;
         console.log('You are connected with user id', userId, 'and socket id', socket.id);
-        socket.emit('login', { userId: userId, socketId: socket.id });
+
+        const userInfo = {
+          userId: userId,
+          socketId: socket.id
+        }
+
+        socket.emit('login', userInfo);
       });
     }
 
@@ -39,20 +50,23 @@ $(document).ready(function() {
         data: message
       })
       .done(function(response) {
-        console.log(response);
+        const content = response.newMessage[0].content
+        const buyer = response.newMessage[0].sender_id
+        const seller = response.newMessage[0].receiver_id
 
-        function sendMessageToUser(recipientUserId, message) {
-          socket.emit('send message', { to: recipientUserId, message: message });
+        const message = {
+          content,
+          buyer,
+          seller
         }
 
-        sendMessageToUser($sellerId, $messageInput);
-      });
-    });
+        // Sending Message To The Server
+        socket.emit('sent message', message );
 
-    socket.on('receive message', function(data) {
-      const messageContainer = $('#all-messages');
-      const messageItem = $('<p>').text(`${data.from}: ${data.message}`);
-      messageContainer.append(messageItem);
     });
-  });
-});
+    });
+  })
+})
+
+// Step 1: Connect User Id With socket Id (Complete)
+// Step 2: On A Post Request Send A Message To The Server For A Specific User Id
