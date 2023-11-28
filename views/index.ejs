@@ -20,9 +20,7 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/favourites.js"></script>
-
-
-
+  <script defer src="/scripts/filter.js"></script>
 
 
 </head>
@@ -80,30 +78,28 @@ function displayItems(itemsArray, maxRows) {
           <li><a href="#">Sign out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
-
     </div><!-- /.container-fluid -->
   </nav>
 
   <!-- Splash Logo -->
+  <!-- TODO: This is empty? -->
   <div class="jumbotron">
+  </div>
 
+  <div class="container"><!-- featured items -->
+    <div class="featured-items-container container text-center">
+      <% if (featuredItems) {
+          displayItems(featuredItems, 1); // Limited to one row
+        }
+      %>
+    </div>
   </div>
 
   <div class="container">
-  <!-- featured items -->
-  <div class="featured-items-container container text-center">
-    <% if (featuredItems) {
-        displayItems(featuredItems, 1); // Limit to one row
-      }
-    %>
-  </div>
-  </div>
-  <div class="container">
-
   <!-- Price Filter -->
   <div class="filter-container container mt-5">
     <h2>Filter by Price Range</h2>
-    <form>
+    <form id="price-form">
       <!-- Price Range Fields -->
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -120,6 +116,7 @@ function displayItems(itemsArray, maxRows) {
     </form>
   </div>
 
+
   <!-- listed items -->
   <div class="listed-items-container container text-center">
     <% if (listedItems) {
@@ -128,26 +125,10 @@ function displayItems(itemsArray, maxRows) {
     %>
   </div>
 
-  <!-- spans for balls -->
+  <!-- spans for balls (up to 19 balls have animated CSS in main.scss) -->
   <div class="background">
-    <!-- <span></span>
     <span></span>
     <span></span>
-    <span></span>
-    <span></span> -->
-    <span></span>
-    <span></span>
-    <!-- <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span> -->
-    <!-- <span></span>
-    <span></span>
-    <span></span>
-    <span></span> -->
     <span></span>
     <span></span>
  </div>
@@ -178,26 +159,8 @@ function displayItems(itemsArray, maxRows) {
                 icon.removeClass('jello-horizontal');
               }, 900); // = 0.9 seconds
             });
-
-            // Add event listener for the form submission
-            $('form').on('submit', function(event) {
-              event.preventDefault(); // Prevent the form from submitting normally
-
-              var minPrice = $('#minPrice').val();
-              var maxPrice = $('#maxPrice').val();
-
-              // Filter the items based on price
-              var filteredItems = listedItems.filter(function(item) {
-                return item.price >= minPrice && item.price <= maxPrice;
-              });
-
-              // Call displayItems with the filtered list
-              displayItems(filteredItems, 2); // Assuming '2' is the max rows you want to display
-            });
           });
+
         </script>
-
-
 </body>
-
 </html>
