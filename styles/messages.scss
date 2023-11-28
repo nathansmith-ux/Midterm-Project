@@ -1,0 +1,32 @@
+// main.scss
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+// Reset and basic styles
+@import 'vendor/normalize-4.1.1.css';
+@import 'vendor/border-box.css';
+
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+// Layout styles
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ecf0f1;
+}
+
+h1 {
+  color: $primary-color;
+}
+
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2em;
+}
+
+// Add any additional styles as needed for your layout
