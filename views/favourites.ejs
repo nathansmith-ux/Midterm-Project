@@ -2,22 +2,24 @@
 <html lang="en">
 
 <head>
+
+  <!-- Meta Tags -->
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta seller_name="viewport" content="width=device-width, initial-scale=1.0" >
   <title>Favourites</title>
 
+  <!-- Internal CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/favourites.css" />
+
   <!-- Boot strap and font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <script src="/"
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
 
 </head>
 
@@ -67,8 +69,8 @@
         }
         %>
         <div class="col-md-3 shoe-product">
-          <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
-          <span><strong><%= itemsArray[i].name %></strong></span>
+          <img src="<%= itemsArray[i].seller_profile_url %>" alt="<%= itemsArray[i].seller_name %>" class="profile-pic">
+          <span><strong><%= itemsArray[i].seller_name %></strong></span>
           <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
           <div class="image-actions">
             <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
@@ -82,28 +84,11 @@
       }
     }
     %>
+
     <% if (favourites && favourites.length > 0) {
       displayItems(favourites);
-    }
- %>
+    } %>
 
-    <!-- <% if (favourites && favourites.length > 0) { %>
-      <div class="row">
-        <% favourites.slice(0, 4).forEach(favourites => { %>
-          <div class="col-md-3 shoe-product">
-            <img src="/images/user-images/person-2.png" alt="Profile Picture" class="profile-pic">
-            <span>Tony Tuesdays</span>
-            <img src="<%= favourites.thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites.title %>">
-            <div class="image-actions">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-envelope"></i>
-              <i class="fas fa-cog"></i>
-            </div>
-            <p><strong><%= favourites.title %></strong> <em><%= favourites.description %> - <strong>$<%= favourites.price %></strong></em></p>
-          </div>
-        <% }) %>
-      </div>
-    <% } %> -->
   </div>
 
   <div class="background">

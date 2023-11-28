@@ -40,7 +40,7 @@ router.post('/add-item', (req, res) => {
     });
 });
 
-// Alters item field in the database
+// Alters item field to sold in the database
 router.patch('/update-item/:id', (req, res) => {
   const itemId = req.params.id;
 
