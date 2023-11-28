@@ -25,13 +25,13 @@ router.get('/', (req, res) => {
 // Adds new item to database
 router.post('/add-item', (req, res) => {
   const itemInfo = req.body;
-  const userId = req.body.seller_id;
+  const userId = req.cookies.user_id;
 
-  item.addListing(itemInfo)
+  item.addListing(itemInfo, userId)
     .then(newItem => {
       return seller.updateSeller(userId)
         .then(() => {
-          res.json({ newItem });
+          res.status(201).json({ message: 'You have successfully created a listing', newItem: newItem });
         });
     })
     .catch(err => {

@@ -72,11 +72,14 @@
               <% } %>
           <div class="col-md-3 shoe-product">
             <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
-            <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p>
+            <!-- <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p> -->
             <div class="image-actions">
-              <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
+              <!-- <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i> -->
               <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
               <i class="fas fa-dollar-sign" data-item-id="<%= itemsArray[i].item%>"></i>
+            </div>
+            <div>
+              <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
             </div>
           </div>
         <% if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %>
@@ -91,36 +94,7 @@
           <% displayItems(listings); // Limit to one row
           } %>
       </div>
-          <!-- Form Column -->
-          <!-- <% if (listings.length === 0) { %>
-          <div class="col-md-12">
-            <div class="jumbotron" style="background-image: url('/images/site-images/coolHue-81FFEF-F067B4.png');">
-              <div class="listings-items-container container text-center">
-                  <div class="no-listings"><p>Looks Like You Have Yet To List An Item!</p></div>
-                </div> -->
 
-                <!-- <form>
-                  <div class="form-group">
-                    <label for="listingTitle">Title</label>
-                    <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
-                  </div>
-                  <div class="form-group">
-                    <label for="listingPrice">Price</label>
-                    <input type="number" class="form-control" id="listingPrice" placeholder="Price">
-                  </div>
-                  <div class="form-group">
-                    <label for="listingDescription">Description</label>
-                    <textarea class="form-control" id="listingDescription" placeholder="Description" rows="3"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="listingThumbnailUrl">Thumbnail Photo URL</label>
-                    <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Create Listing</button>
-                </form> -->
-              <!-- </div>
-            </div>
-            <% } %> -->
     <!-- Mock Ads-->
     <div class="row">
       <!-- Left Jumbotron for Image -->
@@ -187,29 +161,28 @@
       </div>
       <div class="modal-body">
         <!-- Your form goes here, copy and paste your form code inside this div -->
-        <form>
+        <form id="add-listing">
           <div class="form-group">
             <label for="listingTitle">Title</label>
-            <input type="text" class="form-control" id="listingTitle" placeholder="Listing Title">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Listing Title">
           </div>
           <div class="form-group">
             <label for="listingPrice">Price</label>
-            <input type="number" class="form-control" id="listingPrice" placeholder="Price">
+            <input type="number" class="form-control" id="price" name="price" placeholder="Price">
           </div>
           <div class="form-group">
             <label for="listingDescription">Description</label>
-            <textarea class="form-control" id="listingDescription" placeholder="Description" rows="3"></textarea>
+            <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3"></textarea>
           </div>
           <div class="form-group">
             <label for="listingThumbnailUrl">Thumbnail Photo URL</label>
-            <input type="url" class="form-control" id="listingThumbnailUrl" placeholder="http://example.com/photo.jpg">
+            <input type="url" class="form-control" id="thumbnail_photo_url" name="thumbnail_photo_url" placeholder="http://example.com/photo.jpg">
           </div>
           <button type="submit" class="btn btn-primary">Create Listing</button>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create Listing</button>
       </div>
     </div>
   </div>
