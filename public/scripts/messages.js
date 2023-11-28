@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     // Receiving Message From The Server
     socket.on('receive message', content => {
-      console.log(content);
+      displayReceivedMessage(content)
       })
 
     function getUserId() {
@@ -63,10 +63,24 @@ $(document).ready(function() {
         // Sending Message To The Server
         socket.emit('sent message', message );
 
+        displaySentMessage(message.content)
+
     });
     });
   })
+
+  const displaySentMessage = (message) => {
+    console.log('Displayed SENT message content', message)
+  }
+
+  const displayReceivedMessage = (message) => {
+    console.log('Displayed RECEIVED message content', message)
+  }
+
 })
 
 // Step 1: Connect User Id With socket Id (Complete)
 // Step 2: On A Post Request Send A Message To The Server For A Specific User Id
+// Step 3: Receive message based on userId
+// Step 4: Create a function to display sent message
+// Step 5: Create a function to display received message
