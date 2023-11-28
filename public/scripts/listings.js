@@ -15,4 +15,11 @@ $(document).ready(function() {
     const itemId = $(this).data('item-id');
     updateSold(itemId);
   });
+
+  const createListing = () => {
+    $.ajax({
+      type: "POST",
+      url: 'api/items/add-item'
+    })
+  }
 });
