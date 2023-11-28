@@ -61,7 +61,7 @@ $(document).ready(function() {
         }
 
         // Sending Message To The Server
-        socket.emit('sent message', message );
+        socket.emit('sent message', message);
 
         displaySentMessage(message.content)
 
@@ -70,11 +70,13 @@ $(document).ready(function() {
   })
 
   const displaySentMessage = (message) => {
-    console.log('Displayed SENT message content', message)
+    const chatContainer = $('#chat-container');
+    chatContainer.append($('<p>').text(message));
   }
 
   const displayReceivedMessage = (message) => {
-    console.log('Displayed RECEIVED message content', message)
+    const chatContainer = $('#chat-container');
+    chatContainer.append($('<p>').text(message));
   }
 
 })
