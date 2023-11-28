@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 const filterByPrice = (minPrice, maxPrice) => {
-  let queryString = `SELECT * FROM items`;
+  let queryString = `SELECT * FROM items JOIN users ON items.seller_id = users.id`;
   const queryParams = [];
 
   if (minPrice !== null && maxPrice !== null) {
