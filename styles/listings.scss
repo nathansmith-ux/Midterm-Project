@@ -5,6 +5,8 @@ body {
     margin: 10px; // Optional, to provide some space around the form
     border-radius: 5px;
     background-color: rgba(128, 128, 128, 0.638);
+    font-family: 'Abril Fatface', serif;
+    font-family: 'Roboto Serif', serif;
   }
 }
 
@@ -35,6 +37,8 @@ body {
   padding: 5px 10px; // Padding to make them look like buttons
   margin: 5px; // Margin to add some space around each button
   border-radius: 4px; // Rounded corners for the buttons
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 
   &:hover, &:focus {
     color: #000; // Text color when hovered or focused
@@ -44,5 +48,19 @@ body {
 
 .btn-lower {
   margin-top: 250px;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
+
+.sold-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/site-images/sold.png') no-repeat center center;
+  background-size: cover; /* ensure it covers the entire area */
+  display: none; /* hide by default */
+}
+
 
