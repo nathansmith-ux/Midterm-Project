@@ -6,18 +6,18 @@ router.get('/', (req, res) => {
   const userId = req.cookies.user_id;
 
   favourites.getAllFavourites(userId)
-  .then(allFavourites => {
-    const templateVars = {
-      favourites: allFavourites
-    }
-    console.log(templateVars);
+    .then(allFavourites => {
+      const templateVars = {
+        favourites: allFavourites
+      };
+      console.log(templateVars);
 
-    res.render('favourites', templateVars)
-  })
-  .catch(err => {
-    res.status(500)
-    console.log('Server error', err)
-  })
+      res.render('favourites', templateVars);
+    })
+    .catch(err => {
+      res.status(500);
+      console.log('Server error', err);
+    });
 });
 
 module.exports = router;

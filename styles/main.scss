@@ -29,6 +29,10 @@ h1, .filter-container {
 
 .navbar {
   margin-bottom: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the navbar stays on top of other elements */
 }
 
 /* Navbar styles */
