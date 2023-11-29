@@ -70,15 +70,15 @@
           if (i % 4 === 0) { %>
             <div class="row gy-10 gx-10">
               <% } %>
-          <div class="col-md-3 shoe-product">
-            <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
-            <!-- <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %></em></p> -->
-            <div class="image-actions">
-              <!-- <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i> -->
-              <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
-              <i class="fas fa-dollar-sign" data-item-id="<%= itemsArray[i].item%>"></i>
-              
+              <div class="col-md-3 shoe-product id="<%= itemsArray[i].item%>">
+                <div class="image-container">
+                  <img src="<%= itemsArray[i].thumbnail_photo_url %>" id="<%= itemsArray[i].item %>-image" class="shoe-img" alt="<%= itemsArray[i].title %>">
+                </div>
 
+                <div class="sold-overlay"></div>
+                <div class="image-actions">
+                  <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
+                  <i class="fas fa-dollar-sign" data-item-id="<%= itemsArray[i].item%>"></i>
             </div>
             <div>
               <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
@@ -115,15 +115,12 @@
       </div>
     </div>
 
-
-
     <!-- Background ball animation -->
   <div class="background">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-    <!-- <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -136,9 +133,6 @@
     <span></span>
     <span></span>
     <span></span>
-    <span></span>
-    <span></span>
-    <span></span> -->
  </div>
 
  <footer>
@@ -211,4 +205,3 @@
       </body>
 
       </html>
-

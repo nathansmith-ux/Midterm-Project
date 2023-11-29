@@ -5,6 +5,8 @@ body {
     margin: 10px; // Optional, to provide some space around the form
     border-radius: 5px;
     background-color: rgba(128, 128, 128, 0.638);
+    font-family: 'Abril Fatface', serif;
+    font-family: 'Roboto Serif', serif;
   }
 }
 
@@ -35,6 +37,8 @@ body {
   padding: 5px 10px; // Padding to make them look like buttons
   margin: 5px; // Margin to add some space around each button
   border-radius: 4px; // Rounded corners for the buttons
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 
   &:hover, &:focus {
     color: #000; // Text color when hovered or focused
@@ -44,51 +48,48 @@ body {
 
 .btn-lower {
   margin-top: 250px;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
-body {
-  form {
-    border: 2px solid #3498db; // Border color
-    padding: 15px; // Increased padding for more spacing inside the border
-    margin: 20px; // Increased margin for more space around the form
-    border-radius: 8px; // Rounded corners
-    background-color: rgba(46, 204, 113, 0.8); // Greenish background color
-  }
+.sold-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/site-images/sold.png') no-repeat center center;
+  background-size: cover; /* ensure it covers the entire area */
+  display: none; /* hide by default */
 }
 
-.jumbotron {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  padding: 50px; // Adjusted padding for better aesthetics
-  height: 400px;
-  background-color: rgba(52, 73, 94, 0.8); // Dark background color
-  background-image: url('/images/site-images/promoSellingBanner.png');
+.image-container {
+  position: relative;
 }
 
-.jumbotron.form-jumbotron {
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  background-image: linear-gradient(135deg, #3498db 10%, #e74c3c 100%); // Gradient with blue and red
-  // Other styling as needed
+.image-container {
+    position: relative;
+    display: inline-block;
 }
 
-.btn {
-  background-color: #3498db; // Blue background for the buttons
-  color: #fff; // White text color for the buttons
-  padding: 10px 15px; // Adjusted padding for better button size
-  margin: 8px; // Adjusted margin for more space around each button
-  border-radius: 6px; // Slightly rounded corners
-  transition: background-color 0.3s; // Smooth transition for hover effect
-
-  &:hover, &:focus {
-    background-color: #e74c3c; // Red background on hover or focus
-  }
+.image-container img {
+    width: 100%; /* Adjust as needed */
 }
 
-.btn-lower {
-  margin-top: 150px; // Reduced margin for better positioning
+#soldText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    display: none; /* Hidden by default */
+    z-index: 2; /* Ensure it's above the image */
+}
+
+.icon-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 3; /* Above the image and the "Sold" text */
 }
