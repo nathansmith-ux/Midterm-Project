@@ -1,5 +1,17 @@
 $(document).ready(function() {
   const socket = io();
+  let currentBuyerId = "";
+  let currentSellerId = "";
+
+  /**
+   *
+   * @param {object} message
+   * Returns an html appended Element
+   */
+  const displayMessage = (message) => {
+    const chatContainer = $('#chat-container');
+    chatContainer.append($('<p>').text(message.content));
+  }
 
   socket.on('connect', () => {
     socket.on("welcome-message", (message) => {
@@ -15,6 +27,12 @@ $(document).ready(function() {
       console.log(message)
       displayMessage(message)
       })
+
+    socket.on('reply to buyer', message => {
+      console.log(message)
+      displayMessage(message)
+    })
+
 
     /**
      * Ajax Request to get all the messages and connect socket id to user id
@@ -71,6 +89,9 @@ $(document).ready(function() {
           seller
         }
 
+        currentBuyerId = response.newMessage[0].sender_id;
+        currentSellerId = response.newMessage[0].receiver_id;
+
         // Sending Message To The Server
         socket.emit('sent message', message);
 
@@ -79,32 +100,6 @@ $(document).ready(function() {
 
       });
     });
-
-    /**
-     * Clicking reply button capturing value and sending to the server
-     */
-    $("#reply-button").on('click', function(event) {
-      event.preventDefault();
-      const $replyMessage = $('#response-message').val();
-
-      const message = {
-        content: $replyMessage
-      }
-
-      socket.emit('reply message', message)
-    })
-
   })
 
-  const displayMessage = (message) => {
-    const chatContainer = $('#chat-container');
-    chatContainer.append($('<p>').text(message.content));
-  }
-
 })
-
-// Step 1: Connect User Id With socket Id (Complete)
-// Step 2: On A Post Request Send A Message To The Server For A Specific User Id
-// Step 3: Receive message based on userId
-// Step 4: Create a function to display sent message
-// Step 5: Create a function to display received message
