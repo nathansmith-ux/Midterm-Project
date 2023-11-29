@@ -8,9 +8,13 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const featured = require('./db/queries/get_featured_items');
 const items = require('./db/queries/get_all_items');
+const { createServer } = require('http');
+const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
 app.set('view engine', 'ejs');
 
@@ -19,6 +23,7 @@ app.set('view engine', 'ejs');
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   '/styles',
   sassMiddleware({
@@ -42,6 +47,7 @@ const favouriteRoutes = require('./routes/favourites');
 // API Routes
 const itemApiRoutes = require('./routes/api/items-api');
 const favouritesApiRoutes = require('./routes/api/favourites-api');
+const messagesApiRoutes = require('./routes/api/messages-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,6 +61,7 @@ app.use('/favourites', favouriteRoutes);
 // API Endpoints
 app.use('/api/items', itemApiRoutes);
 app.use('/api/favourites', favouritesApiRoutes);
+app.use('/api/messages', messagesApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
@@ -92,6 +99,37 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
-app.listen(PORT, () => {
+// Socket Object Empty but maps to user id (keys) and socket ids (values)
+let socketMap = {};
+
+io.on("connect", (socket) => {
+  io.emit('welcome-message', "You Are Connected To Our Chat System")
+
+  // Ties User To Socket Id On Server and populates socketMap
+  socket.on('login', (userInfo) => {
+    const userId = userInfo.userId
+    const socketId = userInfo.socketId
+
+    socketMap[userId] = socketId
+  })
+
+  // Listening for sent message, then responding with action
+  socket.on('sent message', message => {
+   // console.log('Socket Object is', socketMap)
+
+    const sellerSocketId = socketMap[message.seller];
+      if (sellerSocketId) {
+        io.to(sellerSocketId).emit('receive message', message)
+      }
+  })
+
+  // Listening for replies within the same conversation
+  socket.on('reply message', message => {
+    const buyerSocketId = socketMap['1']
+    io.to(buyerSocketId).emit('reply to buyer', message)
+  })
+});
+
+httpServer.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
