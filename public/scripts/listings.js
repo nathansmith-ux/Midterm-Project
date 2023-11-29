@@ -8,8 +8,8 @@ $(document).ready(function() {
     })
       .done(function(response) {
         console.log(response);
-                // Show the "Sold" overlay
-                $(`[data-item-id="${itemId}"]`).closest('.shoe-product').find('.sold-overlay').show();
+        // Show the "Sold" overlay
+        $(`[data-item-id="${itemId}"]`).closest('.shoe-product').find('.sold-overlay').show();
       });
   };
 
@@ -43,16 +43,6 @@ $("#add-listing").on('submit', function(event) {
     const thumbnail_photo_url = $('#thumbnail_photo_url').val();
 
     createListing(title, price, description, thumbnail_photo_url)
-  });
-
-  const soldButtons = document.querySelectorAll('.fa-dollar-sign');
-
-  soldButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const container = this.closest('.image-container');
-      const soldText = container.querySelector('.soldText');
-      soldText.style.display = soldText.style.display === 'none' ? 'block' : 'none';
-    });
   });
 
 });
