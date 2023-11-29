@@ -72,20 +72,21 @@
   </div>
 
     <div class="chat-interface">
-      <h1 class="display-5 fw-bold text-white text-center">Chat History</h1>
+      <h1 class="fw-bold text-center">Chat History</h1>
       <div class="col-lg-6 mx-auto">
         <div id="chat-container">
 
           <!-- Chat Messages Go Here-->
           <% if (messages) { %>
             <% for (let i = 0; i < messages.length; i++) { %>
-              <div class="message-container <%= messages[i].sender_id = userId ? 'sent' : 'received' %>">
+              <!-- We can set the classes with userId for sent and received  -->
+              <div class="message-container <%= i % 2 === 0 ? 'sent' : '' %>">
                 <p><%= messages[i].content %></p>
               </div>
               <% } %>
               <% } %>
             </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" id="reply-section">
+            <div class="justify-content-sm-center" id="reply-section">
               <form>
                 <input type="text" id="response-message">
                 <button type="button" id="reply-button">Reply</button>

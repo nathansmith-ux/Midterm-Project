@@ -5,6 +5,13 @@ body {
   font-family: 'Source Sans 3', sans-serif;
 }
 
+h1 {
+  font-family: 'Bungee', sans-serif;
+  display: flex;
+  justify-content: center;
+
+}
+
 button {
   border-radius: 50%; /* Circular shape */
   border: 2px solid #fff;
@@ -26,19 +33,24 @@ button:active {
 // make styling for messages and style them to be colorful
 
 // style message container
+#message-container {
+  display: flex;
+  justify-content: center;
+}
 
 #message-form {
   background-color: rgb(225, 225, 225);
-  max-width: 80%;
+  max-width: 100%;
   padding: 10px 15px;
   margin: 10px;
   border: 4px blanchedalmond;
   border-radius: 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   position: relative;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 16px;
   line-height: 1.4;
+  text-align: center;
 }
 
 input {
@@ -53,7 +65,7 @@ input {
 
 /* General chat bubble styling */
 .message-container {
-  background-color: #a1caca;
+  background-color: #a3e8cf;
   max-width: 80%;
   padding: 10px 15px;
   margin: 10px;
@@ -66,8 +78,8 @@ input {
   line-height: 1.4;
 }
 
-sent {
-  background-color: #a1caca;
+.message-container.sent {
+  background-color: #d9e7e7;
 }
 
 footer {
