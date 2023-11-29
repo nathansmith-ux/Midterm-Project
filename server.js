@@ -105,6 +105,7 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
+// Socket Object Empty but maps to user id (keys) and socket ids (values)
 let socketMap = {};
 
 io.on("connect", (socket) => {
@@ -116,20 +117,24 @@ io.on("connect", (socket) => {
     const socketId = userInfo.socketId
 
     socketMap[userId] = socketId
-
-    console.log(`Logged in as ${userId} and with socket id of ${socketId}`)
   })
 
   // Listening for sent message, then responding with action
   socket.on('sent message', message => {
-    console.log('The message content is', message.content);
-    console.log('This message is from', message.buyer);
-    console.log('This message is going to', message.seller)
+   // console.log('Socket Object is', socketMap)
 
     const sellerSocketId = socketMap[message.seller];
       if (sellerSocketId) {
         io.to(sellerSocketId).emit('receive message', message)
       }
+  })
+
+  // Listening for replies within the same conversation
+  socket.on('reply message', message => {
+    console.log(message);
+    console.log(message.buyer);
+    console.log(message.seller)
+    console.log(message.content)
   })
 });
 

@@ -2,6 +2,9 @@ $(document).ready(function() {
   const socket = io();
   let currentBuyerId = "";
   let currentSellerId = "";
+  $('#reply-section').hide()
+
+  // Helper Functions
 
   /**
    *
@@ -13,6 +16,8 @@ $(document).ready(function() {
     chatContainer.append($('<p>').text(message.content));
   }
 
+
+  // Socket Io Connections
   socket.on('connect', () => {
     socket.on("welcome-message", (message) => {
       console.log(message);
@@ -24,6 +29,7 @@ $(document).ready(function() {
      * Returns a function
      */
     socket.on('receive message', message => {
+      $("#reply-section").show();
       console.log(message)
       displayMessage(message)
       })
@@ -33,6 +39,7 @@ $(document).ready(function() {
       displayMessage(message)
     })
 
+    // AJAX Requests
 
     /**
      * Ajax Request to get all the messages and connect socket id to user id
@@ -56,6 +63,8 @@ $(document).ready(function() {
     }
 
     getUserId();
+
+    const startingConversation()
 
     /**
      * Click event on send button to gather all information to tie to the server
@@ -97,9 +106,22 @@ $(document).ready(function() {
 
         displayMessage(message)
         $("#message-container").hide();
-
       });
     });
+
+    $("#reply-button").on('click', function(event) {
+      event.preventDefault();
+
+      const $replyMessage = $('#response-message').val();
+
+      const message = {
+        content: $replyMessage,
+        buyer: currentBuyerId,
+        seller: currentSellerId
+      }
+
+      socket.emit('reply message', message)
+    })
   })
 
 })
