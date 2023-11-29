@@ -2,7 +2,7 @@ $(document).ready(function() {
   const updateSold = (itemId) => {
     $.ajax({
       type: "PATCH",
-      url: `/api/items/update-item/${itemId}`,
+      url: `/api/items/update-item/${itemId}`, // Is this good?
       data: {itemId: itemId},
       dataType: 'json'
     })
@@ -13,12 +13,9 @@ $(document).ready(function() {
       });
   };
 
-    $('.fas.fa-dollar-sign').one("click", function() {
-      const itemId = $(this).data('item-id'); // Could there be a cross over with the item id and user id for vintage sneakers?
-      updateSold(itemId);
-      $(`[data-item-id="${itemId}"]`).closest('.shoe-product').find('.sold-overlay').show();
-    // Disable further clicks
-    $(this).css("pointer-events", "none");
+  $('.fas.fa-dollar-sign').one("click", function() {
+    const itemId = $(this).data('item-id');
+    updateSold(itemId);
   });
 
   const createListing = (title, price, description, thumbnail_photo_url) => {
@@ -59,6 +56,12 @@ $("#add-listing").on('submit', function(event) {
   });
 
 });
-
-
-
+// id SERIAL PRIMARY KEY NOT NULL,
+// seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+// title VARCHAR(255) NOT NULL,
+// price INTEGER NOT NULL,
+// description TEXT NOT NULL,
+// date_posted DATE NOT NULL,
+// sold BOOLEAN NOT NULL DEFAULT FALSE,
+// featured BOOLEAN NOT NULL DEFAULT FALSE,
+// thumbnail_photo_url TEXT NOT NULL
