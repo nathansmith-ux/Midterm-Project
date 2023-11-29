@@ -545,3 +545,11 @@ footer a {
 footer a:hover {
   color: #23527c;
 }
+
+.navbar {
+  margin-bottom: 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}

@@ -46,3 +46,49 @@ body {
   margin-top: 250px;
 }
 
+body {
+  form {
+    border: 2px solid #3498db; // Border color
+    padding: 15px; // Increased padding for more spacing inside the border
+    margin: 20px; // Increased margin for more space around the form
+    border-radius: 8px; // Rounded corners
+    background-color: rgba(46, 204, 113, 0.8); // Greenish background color
+  }
+}
+
+.jumbotron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  padding: 50px; // Adjusted padding for better aesthetics
+  height: 400px;
+  background-color: rgba(52, 73, 94, 0.8); // Dark background color
+  background-image: url('/images/site-images/promoSellingBanner.png');
+}
+
+.jumbotron.form-jumbotron {
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  background-image: linear-gradient(135deg, #3498db 10%, #e74c3c 100%); // Gradient with blue and red
+  // Other styling as needed
+}
+
+.btn {
+  background-color: #3498db; // Blue background for the buttons
+  color: #fff; // White text color for the buttons
+  padding: 10px 15px; // Adjusted padding for better button size
+  margin: 8px; // Adjusted margin for more space around each button
+  border-radius: 6px; // Slightly rounded corners
+  transition: background-color 0.3s; // Smooth transition for hover effect
+
+  &:hover, &:focus {
+    background-color: #e74c3c; // Red background on hover or focus
+  }
+}
+
+.btn-lower {
+  margin-top: 150px; // Reduced margin for better positioning
+}
