@@ -121,13 +121,13 @@ io.on("connect", (socket) => {
 
       // Listening for sent message, then responding with action
   socket.on('sent message', message => {
-    console.log('The message content is', message.content);
-    console.log('This message is from', message.buyer);
-    console.log('This message is going to', message.seller)
+    // console.log('The message content is', message.content);
+    // console.log('This message is from', message.buyer);
+    // console.log('This message is going to', message.seller)
 
     const sellerSocketId = socketMap[message.seller];
     if (sellerSocketId) {
-      io.to(sellerSocketId).emit('receive message', message.content)
+      io.to(sellerSocketId).emit('receive message', message)
     }
   })
   })

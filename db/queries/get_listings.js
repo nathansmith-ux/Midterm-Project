@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 const getAllListings = (userId) => {
-  const queryString = `SELECT * FROM items JOIN users ON items.seller_id = users.id WHERE users.seller = TRUE AND users.id = $1;;`
+  const queryString = `SELECT * FROM items JOIN users ON items.seller_id = users.id WHERE users.seller = TRUE AND users.id = $1;`;
   const queryParams = [userId];
 
   return db.query(queryString, queryParams)

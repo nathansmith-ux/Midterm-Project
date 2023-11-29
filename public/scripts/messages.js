@@ -6,11 +6,19 @@ $(document).ready(function() {
       console.log(message);
     });
 
-    // Receiving Message From The Server
-    socket.on('receive message', content => {
-      displayReceivedMessage(content)
+    /**
+     * Receives message from the server
+     * Inputs: Event, message object containing seller, buyer and content
+     * Returns a function
+     */
+    socket.on('receive message', message => {
+      console.log(message)
+      displayMessage(message)
       })
 
+    /**
+     * Ajax Request to get all the messages and connect socket id to user id
+     */
     function getUserId() {
       $.ajax({
         type: "GET",
@@ -31,6 +39,9 @@ $(document).ready(function() {
 
     getUserId();
 
+    /**
+     * Click event on send button to gather all information to tie to the server
+     */
     $("#send-button").on('click', function(event) {
       event.preventDefault();
 
@@ -63,20 +74,31 @@ $(document).ready(function() {
         // Sending Message To The Server
         socket.emit('sent message', message);
 
-        displaySentMessage(message.content)
+        displayMessage(message)
+        $("#message-container").hide();
 
+      });
     });
-    });
+
+    /**
+     * Clicking reply button capturing value and sending to the server
+     */
+    $("#reply-button").on('click', function(event) {
+      event.preventDefault();
+      const $replyMessage = $('#response-message').val();
+
+      const message = {
+        content: $replyMessage
+      }
+
+      socket.emit('reply message', message)
+    })
+
   })
 
-  const displaySentMessage = (message) => {
+  const displayMessage = (message) => {
     const chatContainer = $('#chat-container');
-    chatContainer.append($('<p>').text(message));
-  }
-
-  const displayReceivedMessage = (message) => {
-    const chatContainer = $('#chat-container');
-    chatContainer.append($('<p>').text(message));
+    chatContainer.append($('<p>').text(message.content));
   }
 
 })

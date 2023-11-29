@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
   messages.getAllMessages(userId)
     .then(messages => {
       const templateVars = {
-        messages
+        messages,
+        userId
       }
 
       console.log(templateVars)
