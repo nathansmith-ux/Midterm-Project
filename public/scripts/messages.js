@@ -2,7 +2,7 @@ $(document).ready(function() {
   const socket = io();
   let currentBuyerId = '1';
   let currentSellerId = '2';
-  $('#reply-section').hide()
+  $('#reply-section').hide();
 
   // Helper Functions
 
@@ -14,7 +14,7 @@ $(document).ready(function() {
   const displayMessage = (message) => {
     const chatContainer = $('#chat-container');
     chatContainer.append($('<p>').text(message.content));
-  }
+  };
 
 
   // Socket Io Connections
@@ -30,38 +30,38 @@ $(document).ready(function() {
      */
     socket.on('receive message', message => {
       $("#reply-section").show();
-      console.log(message)
-      displayMessage(message)
-      })
+      console.log(message);
+      displayMessage(message);
+    });
 
     socket.on('reply to buyer', message => {
       $("#reply-section").show();
-      console.log(message)
-      displayMessage(message)
-    })
+      console.log(message);
+      displayMessage(message);
+    });
 
     // AJAX Requests
 
     /**
      * Ajax Request to get all the messages and connect socket id to user id
      */
-    function getUserId() {
+    const getUserId = function() {
       $.ajax({
         type: "GET",
         url: "/api/messages"
       })
-      .done(function(response) {
-        const userId = response.user[0].id;
-        console.log('You are connected with user id', userId, 'and socket id', socket.id);
+        .done(function(response) {
+          const userId = response.user[0].id;
+          console.log('You are connected with user id', userId, 'and socket id', socket.id);
 
-        const userInfo = {
-          userId: userId,
-          socketId: socket.id
-        }
+          const userInfo = {
+            userId: userId,
+            socketId: socket.id
+          };
 
-        socket.emit('login', userInfo);
-      });
-    }
+          socket.emit('login', userInfo);
+        });
+    };
 
     getUserId();
 
@@ -86,23 +86,23 @@ $(document).ready(function() {
         url: '/api/messages',
         data: message
       })
-      .done(function(response) {
-        const content = response.newMessage[0].content
-        const buyer = response.newMessage[0].sender_id
-        const seller = response.newMessage[0].receiver_id
+        .done(function(response) {
+          const content = response.newMessage[0].content;
+          const buyer = response.newMessage[0].sender_id;
+          const seller = response.newMessage[0].receiver_id;
 
-        const message = {
-          content,
-          buyer,
-          seller
-        }
+          const message = {
+            content,
+            buyer,
+            seller
+          };
 
-        // Sending Message To The Server
-        socket.emit('sent message', message);
+          // Sending Message To The Server
+          socket.emit('sent message', message);
 
-        displayMessage(message)
-        $("#message-container").hide();
-      });
+          displayMessage(message);
+          $("#message-container").hide();
+        });
     });
 
     $("#reply-button").on('click', function(event) {
@@ -114,10 +114,10 @@ $(document).ready(function() {
         content: $replyMessage,
         buyer: currentBuyerId,
         seller: currentSellerId
-      }
+      };
 
-      socket.emit('reply message', message)
-    })
-  })
+      socket.emit('reply message', message);
+    });
+  });
 
-})
+});
