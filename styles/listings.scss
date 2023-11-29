@@ -46,3 +46,32 @@ body {
   margin-top: 250px;
 }
 
+// This is the CSS for Sold items
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 100%; /* Adjust as needed */
+}
+
+#soldText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2em;
+  display: none; /* Hidden by default */
+  z-index: 2; /* Ensure it's above the image */
+}
+
+.icon-button {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  z-index: 3; /* Above the image and the "Sold" text */
+}
+

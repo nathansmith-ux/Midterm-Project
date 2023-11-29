@@ -8,6 +8,8 @@ $(document).ready(function() {
     })
       .done(function(response) {
         console.log(response);
+                // Show the "Sold" overlay
+                $(`[data-item-id="${itemId}"]`).closest('.shoe-product').find('.sold-overlay').show();
       });
   };
 
@@ -15,10 +17,6 @@ $(document).ready(function() {
     const itemId = $(this).data('item-id');
     updateSold(itemId);
   });
-
-  // Select the form, then on submission we prevent deafult behaviour
-  // For each name we need to create a variable to contain the value: DONE
-  // We call the createListing with the variables passed as parameteres
 
   const createListing = (title, price, description, thumbnail_photo_url) => {
     $.ajax({
@@ -46,6 +44,17 @@ $("#add-listing").on('submit', function(event) {
 
     createListing(title, price, description, thumbnail_photo_url)
   });
+
+  const soldButtons = document.querySelectorAll('.fa-dollar-sign');
+
+  soldButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const container = this.closest('.image-container');
+      const soldText = container.querySelector('.soldText');
+      soldText.style.display = soldText.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+
 });
 // id SERIAL PRIMARY KEY NOT NULL,
 // seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
