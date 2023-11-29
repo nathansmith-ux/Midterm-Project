@@ -131,10 +131,8 @@ io.on("connect", (socket) => {
 
   // Listening for replies within the same conversation
   socket.on('reply message', message => {
-    console.log(message);
-    console.log(message.buyer);
-    console.log(message.seller)
-    console.log(message.content)
+    const buyerSocketId = socketMap['1']
+    io.to(buyerSocketId).emit('reply to buyer', message)
   })
 });
 

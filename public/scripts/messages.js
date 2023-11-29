@@ -1,7 +1,7 @@
 $(document).ready(function() {
   const socket = io();
-  let currentBuyerId = "";
-  let currentSellerId = "";
+  let currentBuyerId = '1';
+  let currentSellerId = '2';
   $('#reply-section').hide()
 
   // Helper Functions
@@ -35,6 +35,7 @@ $(document).ready(function() {
       })
 
     socket.on('reply to buyer', message => {
+      $("#reply-section").show();
       console.log(message)
       displayMessage(message)
     })
@@ -63,8 +64,6 @@ $(document).ready(function() {
     }
 
     getUserId();
-
-    const startingConversation()
 
     /**
      * Click event on send button to gather all information to tie to the server
@@ -97,9 +96,6 @@ $(document).ready(function() {
           buyer,
           seller
         }
-
-        currentBuyerId = response.newMessage[0].sender_id;
-        currentSellerId = response.newMessage[0].receiver_id;
 
         // Sending Message To The Server
         socket.emit('sent message', message);
