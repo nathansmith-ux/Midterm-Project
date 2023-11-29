@@ -2,20 +2,25 @@
 <html lang="en">
 
 <head>
+
+  <!-- Meta Tags -->
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta seller_name="viewport" content="width=device-width, initial-scale=1.0" >
   <title>Favourites</title>
 
+  <!-- Internal CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/favourites.css" />
+
   <!-- Boot strap and font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+
 </head>
 
 <body>
@@ -29,9 +34,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          <img src="https://images7.alphacoders.com/115/1153599.jpg" class="img-responsive" alt="Responsive image">
-      </a>
+        <a class="navbar-brand" href="http://localhost:8080/login/1">
+          <img src="/images/site-images/logo2.png" class="img-responsive" alt="Responsive image">
+        </a>
 
       </div>
 
@@ -52,28 +57,42 @@
   </nav>
   <!-- Splash Logo -->
   <div class="jumbotron">
-    <h1>Favourites</h1>
   </div>
 
   <div class="container text-center">
-    <% if (favourites) { %>
-      <div class="row">
-        <% for (let i = 0; i < favourites.length; i++) { %>
-          <div class="col-md-3 shoe-product">
-            <img src="<%= favourites[i].thumbnail_photo_url %>" class="img-responsive shoe-img" alt="<%= favourites[i].title %>">
-            <p><strong><%= favourites[i].title %></strong> <em><%= favourites[i].description %></em></p>
-            <div class="image-actions">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-envelope"></i>
-              <i class="fas fa-cog"></i>
-            </div>
+    <%
+    function displayItems(itemsArray, maxRows) {
+      maxRows = maxRows || 6; // Defaults to 6 without input
+      for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+        if (i % 4 === 0) {
+          %><div class="row gy-10 gx-10"><%
+        }
+        %>
+        <div class="col-md-3 shoe-product">
+          <img src="<%= itemsArray[i].seller_profile_url %>" alt="<%= itemsArray[i].seller_name %>" class="profile-pic">
+          <span><strong><%= itemsArray[i].seller_name %></strong></span>
+          <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
+          <div class="image-actions">
+            <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
+            <i class="fas fa-envelope" onclick="location.href='mailto:<%= itemsArray[i].seller_email %>'" data-item-id="<%= itemsArray[i].id %>"></i>
+            <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
           </div>
-        <% } %>
-      </div>
-    <% } %>
+          <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
+        </div><%
+        if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
+        }
+      }
+    }
+    %>
+
+    <% if (favourites && favourites.length > 0) {
+      displayItems(favourites);
+    } %>
+
   </div>
 
   <div class="background">
+    <!-- <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -91,6 +110,7 @@
     <span></span>
     <span></span>
     <span></span>
+    <span></span> -->
     <span></span>
     <span></span>
     <span></span>
