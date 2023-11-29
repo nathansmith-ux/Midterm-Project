@@ -20,7 +20,9 @@ body {
   padding-bottom: 100px;
   height: 400px;
   background-color: rgba(128, 128, 128, 0.638);
-  background-image: url('/images/site-images/promoSellingBanner.png');
+  //background-image: url('/images/site-images/promoSellingBanner.png');
+  margin-top: 20px;
+ // background-image: url('/images/site-images/Superkit.png');
 }
 
 .jumbotron.form-jumbotron {
@@ -42,7 +44,7 @@ body {
 
   &:hover, &:focus {
     color: #000; // Text color when hovered or focused
-    background-color: #bb9b9b; // Slightly different background on hover
+    background-color: #9bbbb1; // Slightly different background on hover
   }
 }
 
@@ -93,3 +95,6 @@ body {
     right: 10px; /* Adjust as needed */
     z-index: 3; /* Above the image and the "Sold" text */
 }
+
+
+
