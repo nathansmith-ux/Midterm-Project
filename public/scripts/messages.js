@@ -4,19 +4,6 @@ $(document).ready(function() {
   let currentSellerId = '2';
   $('#reply-section').hide();
 
-  // Helper Functions
-
-  /**
-   *
-   * @param {object} message
-   * Returns an html appended Element
-   */
-  const displayMessage = (message) => {
-    const chatContainer = $('#chat-container');
-    chatContainer.append($('<p>').text(message.content));
-  };
-
-
   // Socket Io Connections
   socket.on('connect', () => {
     socket.on("welcome-message", (message) => {
@@ -91,6 +78,8 @@ $(document).ready(function() {
           const buyer = response.newMessage[0].sender_id;
           const seller = response.newMessage[0].receiver_id;
 
+          const direction = buyer === currentBuyerId ? 'from' : 'sent';
+
           const message = {
             content,
             buyer,
@@ -100,7 +89,7 @@ $(document).ready(function() {
           // Sending Message To The Server
           socket.emit('sent message', message);
 
-          displayMessage(message);
+          displayMessage(message, direction);
           $("#message-container").hide();
         });
     });
@@ -118,6 +107,17 @@ $(document).ready(function() {
 
       socket.emit('reply message', message);
     });
+
+    const displayMessage = (message, direction) => {
+      const chatContainer = $('#chat-container');
+      const messageClass = direction === 'sent' ? 'message-container' : 'message-container sent';
+
+      const messageHTML = `
+      <div class="${messageClass}">
+        <p>${message.content}</p>
+      </div>`
+      chatContainer.append(messageHTML);
+  };
   });
 
 });
