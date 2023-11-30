@@ -30,8 +30,7 @@ button:hover {
 
 // button animation!
 button:active {
-  transform: translateY(2px); // Slight move down on click
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 // make styling for messages and style them to be colorful
@@ -51,6 +50,34 @@ button:active {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+#openModal {
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto; /* Adjust the width as needed */
+  height: 15%; /* 25% of the jumbotron's height */
+  padding: 10px 20px;
+  font-size: 1.5em; /* Larger font size */
+  background-color: #6694ae; /* Traditional blue color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  cursor: pointer; /* Changes cursor to pointer */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+
+#openModal:hover {
+  background-color: #005383; /* Darker shade of blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+#openModal:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Return to smaller shadow when clicked */
 }
 
 #send-button {
@@ -86,35 +113,109 @@ input {
   background-color: rgba(128, 128, 128, 0.638);
   background-image: url('/images/site-images/messagesJumbotron.png');
   margin-bottom: 0px;
+  position: relative;
 }
 
 .chat-interface {
   background-size: cover; /* This will ensure the image covers the entire div */
   background-position: center; /* This centers the image in the div */
   padding: 20px; /* Add some padding for better layout */
+  margin-top: -68px;
+  position: relative;
+  justify-content: center;
+}
+
+#chat-container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: center;
+  margin: auto;
+  height: 500px;
+  border-radius: 20px;
+  padding: 20px;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
+
 }
 
 /* Continue with the rest of the chat bubble styles */
 
 /* General chat bubble styling */
 .message-container {
-  background-color: #a3e8cf;
+  background-color: #ffffff;
   max-width: 80%;
-  padding: 10px 15px;
+  padding: 10px 10px 10px 10px;
   margin: 10px;
+  margin-left: 50px;
   margin-top: 0px;
+  max-width: 80%;
   border: 4px blanchedalmond;
   border-radius: 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   font-family: 'Arial', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.4;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 .message-container.sent {
-  background-color: #d9e7e7;
+  align-self: flex-start;
+  background-color: #8eb1c5;
 }
+
+.profile-pic {
+  width: 40px; /* Adjust as needed */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: -20px; /* Half outside the top edge of the container */
+  left: -32px; /* Positioned to the left of the container */
+  border: 2px solid #00629b; /* Optional: to create a border around the image */
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 footer {
   position: absolute;
