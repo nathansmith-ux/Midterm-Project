@@ -97,8 +97,8 @@ $(document).ready(function() {
 
       const message = {
         content: $replyMessage,
-        buyer: currentBuyerId,
-        seller: currentSellerId
+        itemId: 12,
+        receiverId: 1
       };
 
       $.ajax({
