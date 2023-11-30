@@ -96,5 +96,13 @@ body {
     z-index: 3; /* Above the image and the "Sold" text */
 }
 
-
-
+.jumbotron .centered-text {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black; /* Set the text color */
+  font-size: 3.5em; /* Adjust the font size as needed */
+  /* Add any additional styling you want for the text */
+  font-weight: bold;
+}
