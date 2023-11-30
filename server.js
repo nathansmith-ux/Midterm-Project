@@ -115,7 +115,7 @@ io.on("connect", (socket) => {
 
   // Listening for sent message, then responding with action
   socket.on('sent message', message => {
-   // console.log('Socket Object is', socketMap)
+   console.log('Socket Object is', socketMap)
 
     const sellerSocketId = socketMap[message.seller];
       if (sellerSocketId) {

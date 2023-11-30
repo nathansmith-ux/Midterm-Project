@@ -116,6 +116,15 @@ input {
   background-color: #d9e7e7;
 }
 
+#center-container {
+  display: flex;
+  justify-content: center;
+}
+
+#chat-container {
+  margin-top: 75px;
+}
+
 footer {
   position: absolute;
   bottom: 0;

@@ -73,8 +73,9 @@
 
     <div class="chat-interface">
       <h1 class="fw-bold text-center"></h1>
-      <div class="col-lg-6 mx-auto">
-        <div id="chat-container">
+      <div class="col-lg-12 mx-auto">
+        <div id="center-container">
+          <div id="chat-container">
 
           <!-- Chat Messages Go Here-->
           <% if (messages) { %>
@@ -85,15 +86,17 @@
               </div>
               <% } %>
               <% } %>
-            </div>
-            <div class="justify-content-sm-center" id="reply-section">
-              <form>
-                <input type="text" id="response-message">
-                <button type="button" id="reply-button">Reply</button>
-              </form>
-            </div>
           </div>
         </div>
+      </div>
+    </div>
+
+      <div id="reply-section">
+        <form>
+          <input type="text" id="response-message">
+          <button type="button" id="reply-button">Reply</button>
+        </form>
+      </div>
 
         <!-- Footer is here -->
       <!-- <footer>
