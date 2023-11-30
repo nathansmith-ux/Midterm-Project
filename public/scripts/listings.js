@@ -29,10 +29,12 @@ $(document).ready(function() {
         thumbnail_photo_url: thumbnail_photo_url
       }
     })
-      .done(response => {
-        console.log(response);
-      })
+    .done(response => {
+      location.reload();
+    })
   };
+
+// location.reload();
 
 $("#add-listing").on('submit', function(event) {
     event.preventDefault();
