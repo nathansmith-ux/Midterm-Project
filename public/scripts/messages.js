@@ -1,21 +1,7 @@
 $(document).ready(function() {
   const socket = io();
-  let currentBuyerId = '1';
-  let currentSellerId = '2';
-  $('#reply-section').hide();
-
-  // Helper Functions
-
-  /**
-   *
-   * @param {object} message
-   * Returns an html appended Element
-   */
-  const displayMessage = (message) => {
-    const chatContainer = $('#chat-container');
-    chatContainer.append($('<p>').text(message.content));
-  };
-
+  let currentBuyerId = 1;
+  let currentSellerId = 2;
 
   // Socket Io Connections
   socket.on('connect', () => {
@@ -29,13 +15,11 @@ $(document).ready(function() {
      * Returns a function
      */
     socket.on('receive message', message => {
-      $("#reply-section").show();
       console.log(message);
       displayMessage(message);
     });
 
     socket.on('reply to buyer', message => {
-      $("#reply-section").show();
       console.log(message);
       displayMessage(message);
     });
@@ -91,6 +75,8 @@ $(document).ready(function() {
           const buyer = response.newMessage[0].sender_id;
           const seller = response.newMessage[0].receiver_id;
 
+          const direction = buyer === currentBuyerId ? 'sent' : 'from';
+
           const message = {
             content,
             buyer,
@@ -100,8 +86,7 @@ $(document).ready(function() {
           // Sending Message To The Server
           socket.emit('sent message', message);
 
-          displayMessage(message);
-          $("#message-container").hide();
+          displayMessage(message, direction);
         });
     });
 
@@ -112,12 +97,42 @@ $(document).ready(function() {
 
       const message = {
         content: $replyMessage,
-        buyer: currentBuyerId,
-        seller: currentSellerId
+        itemId: 12,
+        receiverId: 1
       };
 
-      socket.emit('reply message', message);
-    });
-  });
+      $.ajax({
+        type: "POST",
+        url: '/api/messages',
+        data: message
+      })
+        .done(function(response) {
+          const content = response.newMessage[0].content;
+          const buyer = response.newMessage[0].sender_id;
+          const seller = response.newMessage[0].receiver_id;
 
-});
+          const direction = buyer === currentBuyerId ? 'from' : 'sent';
+
+          const message = {
+            content,
+            buyer,
+            seller
+          };
+
+        socket.emit('reply message', message);
+        displayMessage(message, direction);
+      });
+    });
+
+    const displayMessage = (message, direction) => {
+      const chatContainer = $('#chat-container');
+      const messageClass = direction === 'sent' ? 'message-container' : 'message-container other-person';
+
+      const messageHTML = `
+      <div class="${messageClass}">
+        <p>${message.content}</p>
+      </div>`
+      chatContainer.append(messageHTML);
+  };
+  });
+})

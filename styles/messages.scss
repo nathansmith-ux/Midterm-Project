@@ -162,7 +162,7 @@ input {
   font-family: 'Roboto Serif', serif;
 }
 
-.message-container.sent {
+.message-container.other-person {
   align-self: flex-start;
   background-color: #8eb1c5;
 }
@@ -215,7 +215,6 @@ input {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 footer {
   position: absolute;
