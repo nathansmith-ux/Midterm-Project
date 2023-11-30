@@ -2,7 +2,6 @@ $(document).ready(function() {
   const socket = io();
   let currentBuyerId = '1';
   let currentSellerId = '2';
-  $('#reply-section').hide();
 
   // Socket Io Connections
   socket.on('connect', () => {
@@ -16,13 +15,11 @@ $(document).ready(function() {
      * Returns a function
      */
     socket.on('receive message', message => {
-      $("#reply-section").show();
       console.log(message);
       displayMessage(message);
     });
 
     socket.on('reply to buyer', message => {
-      $("#reply-section").show();
       console.log(message);
       displayMessage(message);
     });
@@ -90,7 +87,6 @@ $(document).ready(function() {
           socket.emit('sent message', message);
 
           displayMessage(message, direction);
-          $("#message-container").hide();
         });
     });
 
