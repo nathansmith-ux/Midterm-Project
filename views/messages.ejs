@@ -59,17 +59,27 @@
 
   <!-- Splash Logo -->
   <div class="jumbotron">
+    <div class="button-wrapper">
+      <button id="openModal">New Message</button>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="message-container">
+          <form id="message-form">
+            <input type="text" id="item-id" placeholder="Item Id">
+            <input type="text" id="message-input" placeholder="Enter Your Message">
+            <input type="text" id="seller-id" placeholder="Seller">
+            <button type="submit" id="send-button">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div id="message-container">
-    <form id="message-form">
-      <input type="text" id="item-id" placeholder="Item Id">
-      <input type="text" id="message-input" placeholder="Enter Your Message">
-      <input type="text" id="seller-id" placeholder="Seller">
-      <button type="submit" id="send-button">Send</button>
-    </form>
-  </div>
+
 
     <div class="chat-interface">
       <h1 class="fw-bold text-center"></h1>
@@ -79,12 +89,16 @@
           <!-- Chat Messages Go Here-->
           <% if (messages) { %>
             <% for (let i = 0; i < messages.length; i++) { %>
-              <!-- We can set the classes with userId for sent and received  -->
               <div class="message-container <%= i % 2 === 0 ? 'sent' : '' %>">
+                <% if (i % 2 === 0) { %>
+                  <img src="/images/user-images/person-5.png" alt="User Profile" class="profile-pic">
+                <% } else { %>
+                  <img src="/images/user-images/person-6.png" alt="User Profile" class="profile-pic">
+                <% } %>
                 <p><%= messages[i].content %></p>
               </div>
-              <% } %>
-              <% } %>
+            <% } %>
+          <% } %>
             </div>
             <div class="justify-content-sm-center" id="reply-section">
               <form>
@@ -95,17 +109,29 @@
           </div>
         </div>
 
-        <!-- Footer is here -->
-      <!-- <footer>
-        <div class="container">
-          <p>&copy; 2023 My Website</p>
-          <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-      </footer> -->
+      <script>
+      var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementById("openModal");
+       // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks the button, open the modal
+      btn.onclick = function() {
+      modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
 
       <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
