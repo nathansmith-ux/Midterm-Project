@@ -81,7 +81,7 @@
           <% if (messages) { %>
             <% for (let i = 0; i < messages.length; i++) { %>
               <!-- We can set the classes with userId for sent and received  -->
-              <div class="message-container <%= i % 2 === 0 ? 'sent' : '' %>">
+              <div class="message-container <%= i % 2 === 0 ? 'other-person' : '' %>">
                 <p><%= messages[i].content %></p>
               </div>
               <% } %>

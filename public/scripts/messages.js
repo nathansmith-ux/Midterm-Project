@@ -1,7 +1,7 @@
 $(document).ready(function() {
   const socket = io();
-  let currentBuyerId = '1';
-  let currentSellerId = '2';
+  let currentBuyerId = 1;
+  let currentSellerId = 2;
 
   // Socket Io Connections
   socket.on('connect', () => {
@@ -75,7 +75,7 @@ $(document).ready(function() {
           const buyer = response.newMessage[0].sender_id;
           const seller = response.newMessage[0].receiver_id;
 
-          const direction = buyer === currentBuyerId ? 'from' : 'sent';
+          const direction = buyer === currentBuyerId ? 'sent' : 'from';
 
           const message = {
             content,
@@ -101,12 +101,32 @@ $(document).ready(function() {
         seller: currentSellerId
       };
 
-      socket.emit('reply message', message);
+      $.ajax({
+        type: "POST",
+        url: '/api/messages',
+        data: message
+      })
+        .done(function(response) {
+          const content = response.newMessage[0].content;
+          const buyer = response.newMessage[0].sender_id;
+          const seller = response.newMessage[0].receiver_id;
+
+          const direction = buyer === currentBuyerId ? 'from' : 'sent';
+
+          const message = {
+            content,
+            buyer,
+            seller
+          };
+
+        socket.emit('reply message', message);
+        displayMessage(message, direction);
+      });
     });
 
     const displayMessage = (message, direction) => {
       const chatContainer = $('#chat-container');
-      const messageClass = direction === 'sent' ? 'message-container' : 'message-container sent';
+      const messageClass = direction === 'sent' ? 'message-container' : 'message-container other-person';
 
       const messageHTML = `
       <div class="${messageClass}">
@@ -115,5 +135,4 @@ $(document).ready(function() {
       chatContainer.append(messageHTML);
   };
   });
-
-});
+})
