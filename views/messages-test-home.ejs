@@ -73,16 +73,13 @@ function displayItems(itemsArray, maxRows) {
     <div class="col-md-3 shoe-product">
       <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
       <span><strong><%= itemsArray[i].name %></strong></span>
-      <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
       <div class="image-actions">
-        <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
         <!-- link to convos page with seller -->
         <a href="/messages/convo-test">
           <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].seller_id %>"></i>
         </a>
-        <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
       </div>
-      <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
+      <p><%= itemsArray[i].description %></p>
     </div><%
       if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
     }
