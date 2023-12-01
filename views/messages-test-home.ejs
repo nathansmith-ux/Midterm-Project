@@ -62,17 +62,42 @@
   <div class="jumbotron">
   </div>
 
-  <!-- Get All User Profiles & Put Into Cards -->
+  <%
+function displayItems(itemsArray, maxRows) {
+  maxRows = maxRows || 6; // Defaults to 6 without input
+  for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+    if (i % 4 === 0) {
+      %><div class="row gy-10 gx-10"><%
+    }
+    %>
+    <div class="col-md-3 shoe-product">
+      <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
+      <span><strong><%= itemsArray[i].name %></strong></span>
+      <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
+      <div class="image-actions">
+        <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
+        <!-- link to convos page with seller -->
+        <a href="/messages/convo-test">
+          <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].seller_id %>"></i>
+        </a>
+        <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
+      </div>
+      <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
+    </div><%
+      if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
+    }
+  }
+}
+%>
 
-
-  <div id="message-container">
-    <form id="message-form">
-      <input type="text" id="item-id" placeholder="Item Id">
-      <input type="text" id="message-input" placeholder="Enter Your Message">
-      <input type="text" id="seller-id" placeholder="Seller">
-      <button type="submit" id="send-button">Send</button>
-    </form>
+<div class="container"><!-- featured items -->
+  <div class="featured-items-container container text-center">
+    <% if (sellers) {
+        displayItems(sellers, 4); // Limited to one row
+      }
+    %>
   </div>
+</div>
 
         <!-- Footer is here -->
       <!-- <footer>

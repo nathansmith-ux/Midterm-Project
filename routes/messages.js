@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const messages = require('../db/queries/get_all_messages');
+const sellers = require('../db/queries/get_all_sellers');
 
 router.get('/', (req, res) => {
   const userId = req.cookies.user_id;
@@ -43,13 +44,11 @@ router.get('/convo-test', (req, res) => {
 });
 
 router.get('/homepage-test', (req, res) => {
-  const userId = req.cookies.user_id;
 
-  messages.getAllMessages(userId)
-    .then(messages => {
+  sellers.getAllSellers()
+    .then(sellers => {
       const templateVars = {
-        messages,
-        userId
+        sellers
       }
 
       console.log(templateVars)

@@ -6,10 +6,10 @@ INSERT INTO users (seller, name, email, password, profile_url)
 VALUES (TRUE, 'Jane Smith', 'jane.smith@example.com', 'password456', '/images/user-images/person-2.png');
 
 INSERT INTO users (seller, name, email, password, profile_url)
-VALUES (FALSE, 'Alice Johnson', 'alice.johnson@example.com', 'password789', '/images/user-images/person-3.png');
+VALUES (TRUE, 'Alice Johnson', 'alice.johnson@example.com', 'password789', '/images/user-images/person-3.png');
 
 INSERT INTO users (seller, name, email, password, profile_url)
 VALUES (TRUE, 'Bob Williams', 'bob.williams@example.com', 'password101', '/images/user-images/person-4.png');
 
 INSERT INTO users (seller, name, email, password, profile_url)
-VALUES (FALSE, 'Emily Brown', 'emily.brown@example.com', 'password102', '/images/user-images/person-5.png');
+VALUES (TRUE, 'Emily Brown', 'emily.brown@example.com', 'password102', '/images/user-images/person-5.png');
