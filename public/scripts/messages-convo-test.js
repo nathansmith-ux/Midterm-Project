@@ -24,6 +24,7 @@ $(document).ready(() => {
       }
 
       socket.emit('capturing current user message', messageInfo)
+      displayMessage(currentUserMessage, currentUserId);
     })
   }
 
@@ -89,23 +90,3 @@ $(document).ready(() => {
   })
 
 });
-
-
-// Chain Of Events
-
-/*
-
-STEP 1: Login as User 1
-STEP 2: Login as User 2
-STEP 3: Click message on user event
-STEP 4: Send A Message
-
-MESSAGE WILL GO USER 2 NO MATTER WHERE THEY ARE IN THE APP!!!!!!
-
-TO DO
-Priority 1: Sending Message -> Display sent message
-
-Priority 2: Handle Seller Reply
-IF UserId
-
-*/
