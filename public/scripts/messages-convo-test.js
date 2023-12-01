@@ -25,6 +25,7 @@ $(document).ready(() => {
 
       socket.emit('capturing current user message', messageInfo)
       displayMessage(currentUserMessage, currentUserId);
+      $('#response-message').val('');
     })
   }
 
