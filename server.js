@@ -138,26 +138,29 @@ io.on("connect", (socket) => {
     // Listens for custom event 'sending message to seller'
     // currentUserMessage is gathered from reply button click
     // Gets the message from buyer and the buyerId
-    socket.on('capturing current user message', (currentUserMessage) => {
+    socket.on('capturing current user message', (messageInfo) => {
+      const { message, senderId } = messageInfo;
+      let receiverId;
 
-      // Getting socketId of sellerid
-      const sellerSocketId = socketMap[conversation.sellerId.toString()];
-      conversation['sellerSocketId'] = sellerSocketId;
+      if (senderId === conversation.userId) {
+        // If the sender is the buyer (user), then the receiver is the seller
+        receiverId = conversation.sellerId;
 
-      // Getting userId
-      const userId = conversation['userId']
-
-      const messageInfo = {
-        message: currentUserMessage,
-        userId: userId
+      } else {
+      // If the sender is the seller, then the receiver is the buyer (user)
+        receiverId = conversation.userId;
       }
 
-      console.log(socketMap);
+      // Look up the receiver's socket ID in the socketMap
+      const receiverSocketId = socketMap[receiverId];
+
       console.log(conversation);
+      console.log(receiverSocketId);
 
-      if(sellerSocketId) {
-        io.to(sellerSocketId).emit('sending message to seller', messageInfo)
-      }
+    if (receiverSocketId) {
+      // Send the message to the receiver
+      io.to(receiverSocketId).emit('receive message', { message, senderId });
+    }
   });
 
   // Other socket event handlers...

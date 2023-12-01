@@ -18,7 +18,12 @@ $(document).ready(() => {
 
       const currentUserMessage = $('#response-message').val()
 
-      socket.emit('capturing current user message', currentUserMessage)
+      const messageInfo = {
+        message: currentUserMessage,
+        senderId: currentUserId
+      }
+
+      socket.emit('capturing current user message', messageInfo)
     })
   }
 
@@ -26,9 +31,10 @@ $(document).ready(() => {
    sendMessage();
 
    // Creating the display
-   const displayMessage = (message, direction) => {
+   const displayMessage = (message, senderId) => {
     const chatContainer = $('#chat-container');
-    const messageClass = direction === 'sent' ? 'message-container' : 'message-container other-person';
+    const isCurrentUser = senderId === currentUserId;
+    const messageClass = isCurrentUser ? 'message-container' : 'message-container other-person';
 
     const messageHTML = `
     <div class="${messageClass}">
@@ -74,12 +80,10 @@ $(document).ready(() => {
 
     capturingSellerId();
 
-    socket.on('sending message to seller', (messageInfo) => {
-      console.log('Sent current user message', messageInfo)
-      const direction = messageInfo.userId === currentUserId ? 'sent' : 'received';
-
-      displayMessage(messageInfo.message, direction)
-    })
+    socket.on('receive message', (data) => {
+      const { message, senderId } = data;
+      displayMessage(message, senderId);
+    });
 
 
   })
@@ -102,6 +106,6 @@ TO DO
 Priority 1: Sending Message -> Display sent message
 
 Priority 2: Handle Seller Reply
-IF UserId 
+IF UserId
 
 */
