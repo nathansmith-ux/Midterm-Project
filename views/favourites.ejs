@@ -19,7 +19,9 @@
   <!-- Boot strap and font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/messages-convo-test.js"></script>
 
 </head>
 
@@ -74,7 +76,10 @@
           <img src="<%= itemsArray[i].thumbnail_photo_url %>" class="shoe-img" alt="<%= itemsArray[i].title %>">
           <div class="image-actions">
             <i class="fas fa-heart" data-item-id="<%= itemsArray[i].id%>"></i>
-            <i class="fas fa-envelope" onclick="location.href='mailto:<%= itemsArray[i].seller_email %>'" data-item-id="<%= itemsArray[i].id %>"></i>
+            <!-- link to convos page with seller -->
+            <a href="/messages/convo-test">
+              <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].seller_id %>"></i>
+            </a>
             <i class="fas fa-cog" data-item-id="<%= itemsArray[i].id%>"></i>
           </div>
           <p><strong><%= itemsArray[i].title %></strong> <em><%= itemsArray[i].description %> - $</em><strong><%= itemsArray[i].price %></strong></p>
