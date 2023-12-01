@@ -163,44 +163,7 @@ io.on("connect", (socket) => {
     }
   });
 
-  // Other socket event handlers...
-  // Put all values from both catchs into the conversation object
 });
-
-
-/* Working Server
-// Socket Object Empty but maps to user id (keys) and socket ids (values)
-let socketMap = {};
-
-io.on("connect", (socket) => {
-  io.emit('welcome-message', "You Are Connected To Our Chat System")
-
-  // Ties User To Socket Id On Server and populates socketMap
-  socket.on('login', (userInfo) => {
-    const userId = userInfo.userId
-    const socketId = userInfo.socketId
-
-    socketMap[userId] = socketId
-  })
-
-  // Listening for sent message, then responding with action
-  socket.on('sent message', message => {
-   console.log('Socket Object is', socketMap)
-   console.log(message);
-
-    const sellerSocketId = socketMap[message.seller];
-      if (sellerSocketId) {
-        io.to(sellerSocketId).emit('receive message', message)
-      }
-  })
-
-  // Listening for replies within the same conversation
-  socket.on('reply message', message => {
-    const buyerSocketId = socketMap['1']
-    io.to(buyerSocketId).emit('reply to buyer', message)
-  })
-});
-*/
 
 httpServer.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
