@@ -91,7 +91,7 @@ app.get('/login/:id', (req, res) => {
       listedItems: allItems
     }
     console.log(templateVars);
-    res.render('index', templateVars)
+    res.render('index' , templateVars)
   })
   .catch(err => {
     res.status(500)
@@ -99,13 +99,35 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
+const conversation = {}
+
+
+// Socket.IO configuration -> Setting up connection to client
 io.on("connect", (socket) => {
-  console.log("The Server Connection Is Made")
+  console.log("The Server Connection Is Made");
 
   socket.on('sending user cookie', (userId) => {
-    console.log(userId)
-  })
-})
+    console.log(userId);
+  });
+
+  // Listens for custom event 'sending message to seller'
+  // senderInformation is gathered from reply button click
+  // Gets the message information from buyer and the buyerId
+  socket.on('sending message to seller', (buyerInformation) => {
+    console.log("The SERVER received object is this:", buyerInformation);
+  });
+
+
+  // Listens for custom event 'sending seller id to the server'
+  // sellerId is the id of the seller profile clicked on the homepage
+  socket.on('sending seller id to the server', (sellerId, changeUrlPath) => {
+    console.log('The SERVER received the SELLER ID as this', sellerId);
+    changeUrlPath();
+  });
+
+  // Other socket event handlers...
+});
+
 
 /* Working Server
 // Socket Object Empty but maps to user id (keys) and socket ids (values)
