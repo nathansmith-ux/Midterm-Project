@@ -28,7 +28,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/vendor/jquery-3.0.0.js"></script>
   <!-- <script defer src="/scripts/messages.js"></script> -->
-  <script defer src="/scripts/messages-home-test.js"></script>
+  <script defer src="/scripts/messages-convo-test.js"></script>
 </head>
 
 <body>
@@ -80,7 +80,7 @@ function displayItems(itemsArray, maxRows) {
       <div class="image-actions">
         <!-- link to convos page with seller -->
         <a href="/messages/convo-test">
-          <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].seller_id %>"></i>
+          <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].id %>"></i>
         </a>
       </div>
       <p><%= itemsArray[i].user_description %></p>

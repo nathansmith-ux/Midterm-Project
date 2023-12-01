@@ -67,6 +67,7 @@ $(document).ready(() => {
 
         // Access  <i class="fa-envelope" data-seller-id="<%= itemsArray[i].seller_id %>"> for seller id
         const sellerId = $(e.currentTarget).data('seller-id')
+        console.log(sellerId)
 
         // Sends seller Id to the server
         // Custom event 'sending seller id to the server'
