@@ -7,12 +7,12 @@ body {
 }
 
 h1.fw-bold.text-center {
-  background-image: url('/images/site-images/chatHistory.png'); /* Replace with the path to your desired image */
-  background-size: cover; /* Ensures the background covers the entire element */
-  background-position: center; /* Centers the background image */
-  color: #FFFFFF; /* Change text color for better visibility */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds a text shadow for better readability */
-  padding: 20px; /* Optional: Adds some padding around the text */
+  background-image: url('/images/site-images/chatHistory.png');
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 20px;
   height: 200px;
 }
 
@@ -24,7 +24,7 @@ button {
 
 button:hover {
   background-color: #f0f0f0;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); // Stronger shadow for effect
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   cursor: pointer; // Changes cursor!
 }
 

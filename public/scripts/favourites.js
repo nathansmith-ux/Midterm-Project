@@ -14,7 +14,7 @@ $(document).ready(function() {
       });
   };
 
-  $('.fas.fa-heart').one("click", function() {
+  $(document).on("click", '.fas.fa-heart', function() {
     const itemId = $(this).data('item-id');
     addFavourites(itemId);
   });
