@@ -17,7 +17,7 @@ h1.fw-bold.text-center {
 }
 
 button {
-  border-radius: 50%; /* Circular shape */
+  border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
@@ -25,23 +25,19 @@ button {
 button:hover {
   background-color: #f0f0f0;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  cursor: pointer; // Changes cursor!
+  cursor: pointer;
 }
 
-// button animation!
 button:active {
-  transform: translateY(2px); // Slight move down on click
+  transform: translateY(2px);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-// make styling for messages and style them to be colorful
-
-// style message container
 #message-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 300px; /* Adjust as needed */
+  max-width: 300px;
   margin: auto;
   font-family: 'Abril Fatface', serif;
   font-family: 'Roboto Serif', serif;
@@ -55,7 +51,7 @@ button:active {
 
 #send-button {
   padding: 10px 20px;
-  background-color: #4CAF50; /* Choose a color that fits your design */
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
@@ -67,7 +63,6 @@ button:active {
   background-color: #45a049;
 }
 
-/* Optionally, if you want to focus on an input field */
 #message-form input[type="text"]:focus {
   outline: none;
   border-color: #4CAF50;
@@ -89,14 +84,12 @@ input {
 }
 
 .chat-interface {
-  background-size: cover; /* This will ensure the image covers the entire div */
-  background-position: center; /* This centers the image in the div */
-  padding: 20px; /* Add some padding for better layout */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
 }
 
-/* Continue with the rest of the chat bubble styles */
 
-/* General chat bubble styling */
 .message-container {
   background-color: #a3e8cf;
   max-width: 80%;
@@ -147,7 +140,7 @@ input {
 
 #reply-button {
   padding: 10px 20px;
-  background-color: #4CAF50; /* Choose a color that fits your design */
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 20px;

@@ -2,21 +2,17 @@
 <html lang="en">
 
 <head>
-
-  <!-- Meta Tags -->
+  <title>Favourites</title>
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta seller_name="viewport" content="width=device-width, initial-scale=1.0" >
-  <title>Favourites</title>
-
   <!-- Internal CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/favourites.css" />
-
-  <!-- Boot strap and font awesome -->
+  <!-- Bootstrap and Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- Scripts -->
@@ -24,16 +20,17 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/messages-convo-test.js"></script>
   <script defer src="/scripts/bounceIcons.js"></script>
-
+  <script defer src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Bootstrap Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <!-- Navigation -->
   <%- include('partials/navbar') %>
   <!-- Splash Logo -->
-  <div class="jumbotron">
-  </div>
-
+  <div class="jumbotron"></div>
+  <!-- Declaration Of displayItems Function -->
   <div class="container text-center">
     <%
     function displayItems(itemsArray, maxRows) {
@@ -62,20 +59,14 @@
         }
       }
       %>
-
+      <!-- List Favourites -->
       <% if (favourites && favourites.length > 0) {
         displayItems(favourites);
       } %>
-
     </div>
-
     <!-- Footer -->
     <%- include('partials/footer') %>
     <!-- Bouncing Balls Background -->
     <%- include('partials/background') %>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <!-- Bootstrap Plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  </body>
-
-  </html>
+</body>
+</html>

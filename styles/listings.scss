@@ -1,8 +1,8 @@
 body {
   form {
-    border: 2px solid #000; // Change the color and size as needed
-    padding: 10px; // Optional, for some spacing inside the border
-    margin: 10px; // Optional, to provide some space around the form
+    border: 2px solid #000;
+    padding: 10px;
+    margin: 10px;
     border-radius: 5px;
     background-color: rgba(128, 128, 128, 0.638);
     font-family: 'Abril Fatface', serif;
@@ -29,21 +29,20 @@ body {
   background-position: center;
   z-index: 1;
   background-image: linear-gradient( 135deg, #81FFEF 10%, #F067B4 100%);
-  /* Other styling as needed */
 }
 
 .btn {
-  background-color: #fff; // White background for the buttons
-  color: #000; // Text color for the buttons
-  padding: 5px 10px; // Padding to make them look like buttons
-  margin: 5px; // Margin to add some space around each button
-  border-radius: 4px; // Rounded corners for the buttons
+  background-color: #fff;
+  color: #000;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 4px;
   font-family: 'Abril Fatface', serif;
   font-family: 'Roboto Serif', serif;
 
   &:hover, &:focus {
-    color: #000; // Text color when hovered or focused
-    background-color: #bb9b9b; // Slightly different background on hover
+    color: #000;
+    background-color: #bb9b9b;
   }
 }
 
@@ -60,8 +59,8 @@ body {
   width: 100%;
   height: 100%;
   background: url('/images/site-images/sold.png') no-repeat center center;
-  background-size: cover; /* ensure it covers the entire area */
-  display: none; /* hide by default */
+  background-size: cover;
+  display: none;
 }
 
 .image-container {
@@ -84,13 +83,13 @@ body {
     transform: translate(-50%, -50%);
     color: white;
     font-size: 2em;
-    display: none; /* Hidden by default */
-    z-index: 2; /* Ensure it's above the image */
+    display: none;
+    z-index: 2;
 }
 
 .icon-button {
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
-    z-index: 3; /* Above the image and the "Sold" text */
+    top: 10px;
+    right: 10px;
+    z-index: 3;
 }

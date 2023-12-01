@@ -3,7 +3,6 @@
 
 <head>
   <title>messages</title>
-
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
@@ -17,26 +16,24 @@
   <!-- Text Font From Google -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:ital@1&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <!-- Bootstrap and Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <!-- Boot strap and font awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <!-- Scripts -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <!-- <script defer src="/scripts/messages.js"></script> -->
-  <script defer src="/scripts/messages-convo-test.js"></script>
+  <script defer src="/scripts/messages-convo-test.js"></script><!-- <script defer src="/scripts/messages.js"></script> -->
+  <script defer src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Bootstrap Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-    <!-- Navigation -->
- <%- include('partials/navbar') %>
-
+  <!-- Navigation -->
+  <%- include('partials/navbar') %>
   <!-- Splash Logo -->
-  <div class="jumbotron">
-  </div>
-
+  <div class="jumbotron"></div>
+  <!-- Declare displayItems Function -->
   <%
 function displayItems(itemsArray, maxRows) {
   maxRows = maxRows || 6; // Defaults to 6 without input
@@ -61,8 +58,8 @@ function displayItems(itemsArray, maxRows) {
   }
 }
 %>
-
-<div class="container"><!-- featured items -->
+<!-- featured items -->
+<div class="container">
   <div class="featured-items-container container text-center">
     <% if (sellers) {
         displayItems(sellers, 4); // Limited to one row
@@ -70,13 +67,7 @@ function displayItems(itemsArray, maxRows) {
     %>
   </div>
 </div>
-
   <!-- Footer -->
   <%- include('partials/footer') %>
-
-      <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    </body>
-
-    </html>
+</body>
+</html>

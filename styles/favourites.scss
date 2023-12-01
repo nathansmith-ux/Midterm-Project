@@ -13,21 +13,21 @@
 }
 
 .featured-items-container {
-  background-color: #f7f7f7; /* Light grey background */
-  border: 1px solid #d3d3d3; /* Light grey border */
-  padding: 20px; /* Add some space inside the border */
-  margin: 20px 0; /* Add some space outside the border */
-  text-align: center; /* Center align the text */
+  background-color: #f7f7f7;
+  border: 1px solid #d3d3d3;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
 }
 
 .featured-items-container .row {
-  margin: 0 auto; /* Center align the rows */
-  display: flex; /* Use flexbox for alignment */
-  justify-content: center; /* Center content horizontally */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .featured-items-container .col-md-3 {
-  margin: 10px; /* Space between columns */
+  margin: 10px;
 }
 
 

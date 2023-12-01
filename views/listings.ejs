@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
+  <title>Listings</title>
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-  <title>Listings</title>
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -19,11 +19,14 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/listings.js"></script>
   <script defer src="/scripts/bounceIcons.js"></script>
+  <script defer src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Bootstrap Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 
 <body>
-   <!-- Navigation -->
-   <%- include('partials/navbar') %>
+  <!-- Navigation -->
+  <%- include('partials/navbar') %>
   <!-- Splash Logo -->
   <div class="jumbotron">
     <div class="row">
@@ -35,7 +38,6 @@
       </div>
     </div>
   </div>
-
       <!-- displayItems function -->
       <% function displayItems(itemsArray, maxRows) {
         maxRows = maxRows || 6; // Defaults to 6 without input
@@ -47,7 +49,7 @@
                 <div class="image-container">
                   <img src="<%= itemsArray[i].thumbnail_photo_url %>" id="<%= itemsArray[i].item %>-image" class="shoe-img" alt="<%= itemsArray[i].title %>">
                 </div>
-
+                <!-- Sold Overlay -->
                 <div class="sold-overlay"></div>
                 <div class="image-actions">
                   <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id%>"></i>
@@ -69,24 +71,18 @@
           <% displayItems(listings); // Limit to one row
           } %>
       </div>
-
     <!-- Mock Ads-->
     <div class="row">
       <!-- Left Jumbotron for Image -->
       <div class="col-md-6">
-        <div class="jumbotron" style="background-image: url('/images/site-images/ad3.png');">
-          <!-- Background image set via inline CSS or external CSS -->
-        </div>
+        <div class="jumbotron" style="background-image: url('/images/site-images/ad3.png');"></div>
       </div>
       <!-- Right Jumbotron for Image -->
       <div class="col-md-6">
-        <div class="jumbotron" style="background-image: url('/images/site-images/smallPromo.png');">
-          <!-- Background image set via inline CSS or external CSS -->
-        </div>
+        <div class="jumbotron" style="background-image: url('/images/site-images/smallPromo.png');"></div>
       </div>
     </div>
-
-    <!-- Modal -->
+    <!-- Modal For Hidden Create Listing Form -->
     <div class="modal fade" id="createListingModal" tabindex="-1" role="dialog" aria-labelledby="createListingModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -97,7 +93,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <!-- Your form goes here, copy and paste your form code inside this div -->
+            <!-- Create Listing Form -->
             <form id="add-listing">
               <div class="form-group">
                 <label for="listingTitle">Title</label>
@@ -128,11 +124,5 @@
     <%- include('partials/footer') %>
     <!-- Bouncing Balls Background -->
     <%- include('partials/background') %>
-
-
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-      </body>
-
-      </html>
+</body>
+</html>
