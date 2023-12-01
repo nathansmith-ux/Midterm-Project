@@ -62,6 +62,8 @@
   <div class="jumbotron">
   </div>
 
+  <!-- Get All User Profiles & Put Into Cards -->
+
 
   <div id="message-container">
     <form id="message-form">
@@ -71,33 +73,6 @@
       <button type="submit" id="send-button">Send</button>
     </form>
   </div>
-
-    <div class="chat-interface">
-      <h1 class="fw-bold text-center"></h1>
-      <div class="col-lg-12 mx-auto">
-        <div id="center-container">
-          <div id="chat-container">
-
-          <!-- Chat Messages Go Here-->
-          <% if (messages) { %>
-            <% for (let i = 0; i < messages.length; i++) { %>
-              <!-- We can set the classes with userId for sent and received  -->
-              <div class="message-container <%= i % 2 === 0 ? 'other-person' : '' %>">
-                <p><%= messages[i].content %></p>
-              </div>
-              <% } %>
-              <% } %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      <div id="reply-section" class="col-lg-12 mx-auto">
-        <form id="reply-form">
-          <input type="text" id="response-message" placeholder="Start Typing A Message To Respond">
-          <button type="button" id="reply-button">Send</button>
-        </form>
-      </div>
 
         <!-- Footer is here -->
       <!-- <footer>

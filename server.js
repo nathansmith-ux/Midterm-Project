@@ -99,6 +99,15 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
+io.on("connect", (socket) => {
+  console.log("The Server Connection Is Made")
+
+  socket.on('sending user cookie', (userId) => {
+    console.log(userId)
+  })
+})
+
+/* Working Server
 // Socket Object Empty but maps to user id (keys) and socket ids (values)
 let socketMap = {};
 
@@ -130,6 +139,7 @@ io.on("connect", (socket) => {
     io.to(buyerSocketId).emit('reply to buyer', message)
   })
 });
+*/
 
 httpServer.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
