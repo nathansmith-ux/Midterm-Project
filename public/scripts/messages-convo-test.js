@@ -4,9 +4,8 @@ $(document).ready(() => {
   // Getting user cookie --> Becomes buyerId
   const cookies = document.cookie.split('; ');
   const userIdCookie = cookies.find(row => row.startsWith('user_id='));
-  const buyerId = userIdCookie ? userIdCookie.split('=')[1] : null;
-  console.log(buyerId);
-
+  const currentUserId = userIdCookie ? userIdCookie.split('=')[1] : null;
+  // console.log(currentUserId);
 
 
   /**
@@ -17,29 +16,41 @@ $(document).ready(() => {
     $('#reply-button').on('click', (e) => {
       e.preventDefault();
 
-      const message = $('#response-message').val()
-      const senderInformation = {
-        message: message,
-        buyerId: buyerId
-      }
+      const currentUserMessage = $('#response-message').val()
 
-      console.log(senderInformation)
-
-      socket.emit('sending message to seller', (buyerInformation) => {
-        console.log("The CLIENT sent object is this:", (buyerInformation))
-      })
-
-      return senderInformation
+      socket.emit('capturing current user message', currentUserMessage)
     })
   }
 
 
    sendMessage();
 
+   // Creating the display
+   const displayMessage = (message, direction) => {
+    const chatContainer = $('#chat-container');
+    const messageClass = direction === 'sent' ? 'message-container' : 'message-container other-person';
+
+    const messageHTML = `
+    <div class="${messageClass}">
+      <p>${message}</p>
+    </div>`
+    chatContainer.append(messageHTML);
+  };
+
 
   // Receiving connection from server and connecting client
   socket.on("connect", () => {
     console.log("The Client Is Connected")
+    console.log('Connected client socket ID:', socket.id)
+    console.log('Connected userId / cookie id:', currentUserId)
+
+    // Holds current userId and the corresponding socketId
+    const currentUserInfo = {
+      'cookie': currentUserId,
+      'socket': socket.id
+    }
+
+    socket.emit('sending user cookie', currentUserInfo)
 
     // When user clicks the email button on homepage it registers the user id as seller id and sends user to the convos page
     const capturingSellerId = () => {
@@ -63,6 +74,34 @@ $(document).ready(() => {
 
     capturingSellerId();
 
+    socket.on('sending message to seller', (messageInfo) => {
+      console.log('Sent current user message', messageInfo)
+      const direction = messageInfo.userId === currentUserId ? 'sent' : 'received';
+
+      displayMessage(messageInfo.message, direction)
+    })
+
+
   })
 
 });
+
+
+// Chain Of Events
+
+/*
+
+STEP 1: Login as User 1
+STEP 2: Login as User 2
+STEP 3: Click message on user event
+STEP 4: Send A Message
+
+MESSAGE WILL GO USER 2 NO MATTER WHERE THEY ARE IN THE APP!!!!!!
+
+TO DO
+Priority 1: Sending Message -> Display sent message
+
+Priority 2: Handle Seller Reply
+IF UserId 
+
+*/

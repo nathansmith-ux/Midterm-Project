@@ -99,33 +99,69 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
+/*
+Data Structure
+conversation = {
+  (string) 'userId': COOKIE, (value)
+  (string) 'sellerId: sellerId (value)
+  (string) 'message': message (value)
+}
+*/
 const conversation = {}
+const socketMap = {}
+
 
 
 // Socket.IO configuration -> Setting up connection to client
 io.on("connect", (socket) => {
   console.log("The Server Connection Is Made");
 
-  socket.on('sending user cookie', (userId) => {
-    console.log(userId);
-  });
 
   // Listens for custom event 'sending message to seller'
-  // senderInformation is gathered from reply button click
-  // Gets the message information from buyer and the buyerId
-  socket.on('sending message to seller', (buyerInformation) => {
-    console.log("The SERVER received object is this:", buyerInformation);
-  });
+  // currentUserId is the cookie id
+  socket.on('sending user cookie', (currentUserInfo) => {
+    conversation['userId'] = currentUserInfo['cookie'];
+    conversation['socketId'] = currentUserInfo['socket'];
 
+    // Store the socket ID against the user ID (cookie ID)
+    socketMap[currentUserInfo['cookie']] = currentUserInfo['socket'];
+
+  });
 
   // Listens for custom event 'sending seller id to the server'
   // sellerId is the id of the seller profile clicked on the homepage
   socket.on('sending seller id to the server', (sellerId, changeUrlPath) => {
-    console.log('The SERVER received the SELLER ID as this', sellerId);
+    conversation['sellerId'] = sellerId
     changeUrlPath();
   });
 
+    // Listens for custom event 'sending message to seller'
+    // currentUserMessage is gathered from reply button click
+    // Gets the message from buyer and the buyerId
+    socket.on('capturing current user message', (currentUserMessage) => {
+
+      // Getting socketId of sellerid
+      const sellerSocketId = socketMap[conversation.sellerId.toString()];
+      conversation['sellerSocketId'] = sellerSocketId;
+
+      // Getting userId
+      const userId = conversation['userId']
+
+      const messageInfo = {
+        message: currentUserMessage,
+        userId: userId
+      }
+
+      console.log(socketMap);
+      console.log(conversation);
+
+      if(sellerSocketId) {
+        io.to(sellerSocketId).emit('sending message to seller', messageInfo)
+      }
+  });
+
   // Other socket event handlers...
+  // Put all values from both catchs into the conversation object
 });
 
 
