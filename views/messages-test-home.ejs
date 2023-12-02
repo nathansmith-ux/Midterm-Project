@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>messages</title>
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/messages.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Text Font From Google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:ital@1&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+  <!-- Bootstrap and Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/messages-convo-test.js"></script><!-- <script defer src="/scripts/messages.js"></script> -->
+  <script defer src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Bootstrap Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <%- include('partials/navbar') %>
+  <!-- Splash Logo -->
+  <div class="jumbotron"></div>
+  <!-- Declare displayItems Function -->
+  <%
+function displayItems(itemsArray, maxRows) {
+  maxRows = maxRows || 6; // Defaults to 6 without input
+  for (let i = 0; i < itemsArray.length && Math.floor(i / 4) < maxRows; i++) {
+    if (i % 4 === 0) {
+      %><div class="row gy-10 gx-10"><%
+    }
+    %>
+    <div class="col-md-3 shoe-product">
+      <img src="<%= itemsArray[i].profile_url %>" alt="<%= itemsArray[i].name %>" class="profile-pic">
+      <span><strong><%= itemsArray[i].name %></strong></span>
+      <div class="image-actions">
+        <!-- link to convos page with seller -->
+        <a href="/messages/convo-test">
+          <i class="fas fa-envelope" data-item-id="<%= itemsArray[i].id %>" data-seller-id="<%= itemsArray[i].id %>"></i>
+        </a>
+      </div>
+      <p><%= itemsArray[i].user_description %></p>
+    </div><%
+      if ((i % 4 === 3) || (i === itemsArray.length - 1)) { %></div><%
+    }
+  }
+}
+%>
+<!-- featured items -->
+<div class="container">
+  <div class="featured-items-container container text-center">
+    <% if (sellers) {
+        displayItems(sellers, 4); // Limited to one row
+      }
+    %>
+  </div>
+</div>
+  <!-- Footer -->
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -21,8 +21,11 @@ $(document).ready(function() {
                   <span><strong>${item.name}</strong></span>
                   <img src="${item.thumbnail_photo_url}" class="shoe-img" alt="${item.title}">
                   <div class="image-actions">
-                      <i class="fas fa-heart" data-item-id="${item.id}"></i>
-                      <i class="fas fa-envelope" onclick="location.href='mailto:${item.seller_email}'" data-item-id="${item.id}"></i>
+                      <i class="fas fa-heart" data-item-id="${item.item_id}"></i>
+                      <a href="/messages/convo-test">
+                        <i class="fas fa-envelope" data-item-id="${item.item_id}" data-seller-id="${item.seller_id}"></i>
+                      </a>
+                      <i class="fas fa-envelope" data-item-id="${item.item_id}"></i>
                       <i class="fas fa-cog" data-item-id="${item.id}"></i>
                   </div>
                   <p><strong>${item.title}</strong> <em>${item.description} - $</em><strong>${item.price}</strong></p>

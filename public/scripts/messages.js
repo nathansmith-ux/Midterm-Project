@@ -136,3 +136,13 @@ $(document).ready(function() {
   };
   });
 })
+
+
+
+/*
+
+TO DO TOMORROW
+1. Find a way to send the socket id of the cookie id user to the server
+2. Find a way to get
+
+*/

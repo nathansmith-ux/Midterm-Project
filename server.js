@@ -91,7 +91,7 @@ app.get('/login/:id', (req, res) => {
       listedItems: allItems
     }
     console.log(templateVars);
-    res.render('index', templateVars)
+    res.render('index' , templateVars)
   })
   .catch(err => {
     res.status(500)
@@ -99,36 +99,70 @@ app.get('/login/:id', (req, res) => {
   })
 });
 
-// Socket Object Empty but maps to user id (keys) and socket ids (values)
-let socketMap = {};
+/*
+Data Structure
+conversation = {
+  (string) 'userId': COOKIE, (value)
+  (string) 'sellerId: sellerId (value)
+  (string) 'message': message (value)
+}
+*/
+const conversation = {}
+const socketMap = {}
 
+
+
+// Socket.IO configuration -> Setting up connection to client
 io.on("connect", (socket) => {
-  io.emit('welcome-message', "You Are Connected To Our Chat System")
+  console.log("The Server Connection Is Made");
 
-  // Ties User To Socket Id On Server and populates socketMap
-  socket.on('login', (userInfo) => {
-    const userId = userInfo.userId
-    const socketId = userInfo.socketId
 
-    socketMap[userId] = socketId
-  })
+  // Listens for custom event 'sending message to seller'
+  // currentUserId is the cookie id
+  socket.on('sending user cookie', (currentUserInfo) => {
+    conversation['userId'] = currentUserInfo['cookie'];
+    conversation['socketId'] = currentUserInfo['socket'];
 
-  // Listening for sent message, then responding with action
-  socket.on('sent message', message => {
-   console.log('Socket Object is', socketMap)
-   console.log(message);
+    // Store the socket ID against the user ID (cookie ID)
+    socketMap[currentUserInfo['cookie']] = currentUserInfo['socket'];
 
-    const sellerSocketId = socketMap[message.seller];
-      if (sellerSocketId) {
-        io.to(sellerSocketId).emit('receive message', message)
+  });
+
+  // Listens for custom event 'sending seller id to the server'
+  // sellerId is the id of the seller profile clicked on the homepage
+  socket.on('sending seller id to the server', (sellerId, changeUrlPath) => {
+    conversation['sellerId'] = sellerId
+    changeUrlPath();
+  });
+
+    // Listens for custom event 'sending message to seller'
+    // currentUserMessage is gathered from reply button click
+    // Gets the message from buyer and the buyerId
+    socket.on('capturing current user message', (messageInfo) => {
+      const { message, senderId } = messageInfo;
+      let receiverId;
+
+      if (senderId === conversation.userId) {
+        // If the sender is the buyer (user), then the receiver is the seller
+        receiverId = conversation.sellerId;
+
+      } else {
+      // If the sender is the seller, then the receiver is the buyer (user)
+        receiverId = conversation.userId;
       }
-  })
 
-  // Listening for replies within the same conversation
-  socket.on('reply message', message => {
-    const buyerSocketId = socketMap['1']
-    io.to(buyerSocketId).emit('reply to buyer', message)
-  })
+      // Look up the receiver's socket ID in the socketMap
+      const receiverSocketId = socketMap[receiverId];
+
+      console.log(conversation);
+      console.log(receiverSocketId);
+
+    if (receiverSocketId) {
+      // Send the message to the receiver
+      io.to(receiverSocketId).emit('receive message', { message, senderId });
+    }
+  });
+
 });
 
 httpServer.listen(PORT, () => {

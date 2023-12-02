@@ -7,40 +7,37 @@ body {
 }
 
 h1.fw-bold.text-center {
-  background-image: url('/images/site-images/chatHistory.png'); /* Replace with the path to your desired image */
-  background-size: cover; /* Ensures the background covers the entire element */
-  background-position: center; /* Centers the background image */
-  color: #FFFFFF; /* Change text color for better visibility */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds a text shadow for better readability */
-  padding: 20px; /* Optional: Adds some padding around the text */
+  background-image: url('/images/site-images/chatHistory.png');
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 20px;
   height: 200px;
 }
 
 button {
-  border-radius: 50%; /* Circular shape */
+  border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
   background-color: #f0f0f0;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); // Stronger shadow for effect
-  cursor: pointer; // Changes cursor!
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
-// button animation!
 button:active {
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-// make styling for messages and style them to be colorful
-
-// style message container
 #message-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 300px; /* Adjust as needed */
+  max-width: 300px;
   margin: auto;
   font-family: 'Abril Fatface', serif;
   font-family: 'Roboto Serif', serif;
@@ -82,7 +79,7 @@ button:active {
 
 #send-button {
   padding: 10px 20px;
-  background-color: #4CAF50; /* Choose a color that fits your design */
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
@@ -94,7 +91,6 @@ button:active {
   background-color: #45a049;
 }
 
-/* Optionally, if you want to focus on an input field */
 #message-form input[type="text"]:focus {
   outline: none;
   border-color: #4CAF50;
@@ -117,32 +113,12 @@ input {
 }
 
 .chat-interface {
-  background-size: cover; /* This will ensure the image covers the entire div */
-  background-position: center; /* This centers the image in the div */
-  padding: 20px; /* Add some padding for better layout */
-  margin-top: -68px;
-  position: relative;
-  justify-content: center;
-}
-
-#chat-container {
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: center;
-  margin: auto;
-  height: 500px;
-  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
   padding: 20px;
-  font-family: 'Abril Fatface', serif;
-  font-family: 'Roboto Serif', serif;
-
 }
 
-/* Continue with the rest of the chat bubble styles */
 
-/* General chat bubble styling */
 .message-container {
   background-color: #ffffff;
   max-width: 80%;
@@ -167,54 +143,17 @@ input {
   background-color: #8eb1c5;
 }
 
-.profile-pic {
-  width: 40px; /* Adjust as needed */
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  position: absolute;
-  top: -20px; /* Half outside the top edge of the container */
-  left: -32px; /* Positioned to the left of the container */
-  border: 2px solid #00629b; /* Optional: to create a border around the image */
+#response-message:hover {
+  background-color: #2E2E2E;
+  color: white;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+#reply-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
 
 footer {
   position: absolute;
