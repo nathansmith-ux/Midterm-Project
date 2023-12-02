@@ -49,6 +49,34 @@ button:active {
   border-radius: 4px;
 }
 
+#openModal {
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto; /* Adjust the width as needed */
+  height: 15%; /* 25% of the jumbotron's height */
+  padding: 10px 20px;
+  font-size: 1.5em; /* Larger font size */
+  background-color: #6694ae; /* Traditional blue color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  cursor: pointer; /* Changes cursor to pointer */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+
+#openModal:hover {
+  background-color: #005383; /* Darker shade of blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+#openModal:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Return to smaller shadow when clicked */
+}
+
 #send-button {
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -81,6 +109,7 @@ input {
   background-color: rgba(128, 128, 128, 0.638);
   background-image: url('/images/site-images/messagesJumbotron.png');
   margin-bottom: 0px;
+  position: relative;
 }
 
 .chat-interface {
@@ -91,46 +120,27 @@ input {
 
 
 .message-container {
-  background-color: #a3e8cf;
+  background-color: #ffffff;
   max-width: 80%;
-  padding: 10px 15px;
+  padding: 10px 10px 10px 10px;
   margin: 10px;
+  margin-left: 50px;
   margin-top: 0px;
+  max-width: 80%;
   border: 4px blanchedalmond;
   border-radius: 20px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   font-family: 'Arial', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.4;
+  font-family: 'Abril Fatface', serif;
+  font-family: 'Roboto Serif', serif;
 }
 
 .message-container.other-person {
-  background-color: #d9e7e7;
-}
-
-#center-container {
-  display: flex;
-  justify-content: center;
-}
-
-#chat-container {
-  margin-top: 75px;
-  margin-bottom: 40px;
-}
-
-#reply-form {
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: center;
-}
-
-#response-message {
-  padding: 10px 20px;
-  margin-right: 15px;
-  border-color: #45a049;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  width: 25%;
+  align-self: flex-start;
+  background-color: #8eb1c5;
 }
 
 #response-message:hover {
@@ -144,9 +154,6 @@ input {
   color: white;
   border: none;
   border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
 footer {
   position: absolute;
